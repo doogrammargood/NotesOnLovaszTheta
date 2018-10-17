@@ -1,0 +1,3620 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsart
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes on Lovasz Theta
+\end_layout
+
+\begin_layout Author
+Victor Bankston
+\end_layout
+
+\begin_layout Standard
+The purpose of this example is to illustrate some of the structure to 
+\begin_inset Formula $\vartheta\left(G\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Notes.eps
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Though the quantities above are scalars, they arise from arrangements of
+ vectors.
+ I will write down the vectors associated with each quantity above when
+ 
+\begin_inset Formula $G$
+\end_inset
+
+ is the Petersen Graph.
+\end_layout
+
+\begin_layout Section*
+Defining 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+First, we need a series of definitions to define 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lov78"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Definition
+Given a graph 
+\begin_inset Formula $G$
+\end_inset
+
+, an orthonormal representation of 
+\begin_inset Formula $G$
+\end_inset
+
+ is a mapping 
+\begin_inset Formula $r:V\left(G\right)\to\mathbb{S}^{n}\subset\mathbb{R}^{n+1}$
+\end_inset
+
+ (for some 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+) such that if 
+\begin_inset Formula $i\neq j\in V\left(G\right)$
+\end_inset
+
+, with 
+\begin_inset Formula $i\not\sim j$
+\end_inset
+
+, then 
+\begin_inset Formula $r\left(i\right)\perp r\left(j\right)$
+\end_inset
+
+.
+ (Be careful: a vertex is not adjacent to itself).
+\end_layout
+
+\begin_layout Standard
+Note that each graph has at least one representation, where 
+\begin_inset Formula $v$
+\end_inset
+
+ maps the verticies each to its own orthonormal vector.
+\end_layout
+
+\begin_layout Definition
+A valuation of an orthonormal representation 
+\begin_inset Formula $val\left(r\right)$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\min_{\psi}\max_{v\in V\left(G\right)}\frac{1}{\left(\psi^{T}r\left(v\right)\right)^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+where 
+\begin_inset Formula $\psi$
+\end_inset
+
+ ranges over all unit vectors (of the target space of 
+\begin_inset Formula $r$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Given an orthonormal representation, its valuation is how tightly it can
+ be embedded into a cone around some vector (
+\begin_inset Formula $\psi$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Definition
+Define 
+\begin_inset Formula $\vartheta\left(G\right)$
+\end_inset
+
+ to be the minimum valuation over all orthonormal representations of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We can show that this minimum is actually attained.
+ We will use Bolzano-Weirstrass.
+ To see this, fix 
+\begin_inset Formula $n$
+\end_inset
+
+, and consider the orthonormal representations of the form: 
+\begin_inset Formula $v:V\left(G\right)\to\mathbb{S}^{n-1}\subset\mathbb{R}^{n}$
+\end_inset
+
+.
+ Observe that 
+\begin_inset Formula $\vartheta\left(G\right)$
+\end_inset
+
+ remains unchanged if we require that 
+\begin_inset Formula $\psi=\left(1,0,0,0\dots\right)$
+\end_inset
+
+: These valuations are defined by an inner product, which will not change
+ if we apply a fixed unitary 
+\begin_inset Formula $U$
+\end_inset
+
+ to every vector.
+ Choose 
+\begin_inset Formula $U$
+\end_inset
+
+ to send 
+\begin_inset Formula $\psi\mapsto\left(1,0,0,0\dots\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Fixing 
+\begin_inset Formula $\psi$
+\end_inset
+
+, take a sequence of orthonormal representations whose values converge to
+ 
+\begin_inset Formula $\vartheta\left(G\right)$
+\end_inset
+
+.
+ Observe that these orthonormal representations themselves can be considered
+ as bounded vectors of dimension 
+\begin_inset Formula $n\cdot V\left(G\right)$
+\end_inset
+
+, by concatenating all 
+\begin_inset Formula $V\left(G\right)$
+\end_inset
+
+ vectors of dimension 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ By the Bolzano-Weirstrass theorem, these have a convergent subsequence,
+ so there is an accumulation point, 
+\begin_inset Formula $r_{\infty}$
+\end_inset
+
+, which we must show is an orthonormal representation.
+\end_layout
+
+\begin_layout Standard
+Our convergent subsequence of orthonormal representations gives rise to
+ 
+\begin_inset Formula $V\left(G\right)$
+\end_inset
+
+ convergent sequences of vectors.
+ We must show that each sequence of vectors goes to a unit vector, and that
+ when 
+\begin_inset Formula $i\not\sim j$
+\end_inset
+
+, with 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+, we have 
+\begin_inset Formula $r_{\infty}\left(i\right)^{T}r_{\infty}\left(j\right)=0$
+\end_inset
+
+.
+ Both of these are consequences of the fact that dot products are continuous:
+ 
+\begin_inset Formula $0=\lim_{n\to\infty}r_{n}\left(i\right)^{T}r_{n}\left(j\right)=\left(\lim_{n\to\infty}r_{n}\left(i\right)\right)^{T}\left(\lim_{n\to\infty}r_{n}\left(j\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+There is no claim that such optimal representations are unique.
+\end_layout
+
+\begin_layout Section*
+Graphs
+\end_layout
+
+\begin_layout Definition
+Define the Kneser Graph 
+\begin_inset Formula $k\left(n,r\right)$
+\end_inset
+
+ to have 
+\begin_inset Formula ${n \choose r}$
+\end_inset
+
+ verticies labeled by 
+\begin_inset Formula $r$
+\end_inset
+
+-element subsets from a universe of size 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Two verticies are adjacent if their corresponding sets are disjoint.
+ We assume that 
+\begin_inset Formula $n\geq2r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kneser graphs are vertex and edge transitive.
+ Given any two verticies (edges), there is an automorphism which sends one
+ to the other.
+\end_layout
+
+\begin_layout Theorem
+If 
+\begin_inset Formula $G$
+\end_inset
+
+ is vertex and edge transitive, then 
+\begin_inset Formula $\vartheta\left(G\right)\vartheta\left(\overline{G}\right)=n$
+\end_inset
+
+, and 
+\begin_inset Formula $\vartheta\left(G\right)=\frac{-n\lambda_{n}}{\lambda_{1}-\lambda_{n}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This powerful theorem was originally used to find 
+\begin_inset Formula $\vartheta\left(k\left(n,r\right)\right)$
+\end_inset
+
+.
+ The proof of the theorem builds on the relations in the diagram.
+\end_layout
+
+\begin_layout Definition
+The Petersen Graph, 
+\begin_inset Formula $P$
+\end_inset
+
+, is the Kneser graph, 
+\begin_inset Formula $k\left(5,2\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Graphics
+	filename 568px-Kneser_graph_KG(5,2).svg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We start with some graph properties.
+\end_layout
+
+\begin_layout Claim
+The clique number of the kneser graph 
+\begin_inset Formula $\omega\left(k\left(n,r\right)\right)=\left\lfloor \frac{n}{r}\right\rfloor $
+\end_inset
+
+, so 
+\begin_inset Formula $\omega\left(P\right)=2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A clique corresponds to a collection of disjoint sets.
+\end_layout
+
+\begin_layout Claim
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wolknes"
+
+\end_inset
+
+The coloring number 
+\begin_inset Formula $\chi\left(k\left(n,r\right)\right)=n-2r+2$
+\end_inset
+
+, so 
+\begin_inset Formula $\chi\left(P\right)=3$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This was a big open problem for many years.
+ The optimal coloring is the following: Order the elements of the universe
+ 
+\begin_inset Formula $u_{1},\dots,u_{n}$
+\end_inset
+
+, and divide them into 
+\begin_inset Formula $3$
+\end_inset
+
+ pieces with sizes 
+\begin_inset Formula $n-2r$
+\end_inset
+
+, 
+\begin_inset Formula $r$
+\end_inset
+
+ and 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $x$
+\end_inset
+
+ be an 
+\begin_inset Formula $r$
+\end_inset
+
+-set.
+ If it intersects the first piece, color 
+\begin_inset Formula $x$
+\end_inset
+
+ with the color 
+\begin_inset Formula $i$
+\end_inset
+
+, where 
+\begin_inset Formula $i=\min\left\{ i\mid u_{i}\in x\right\} $
+\end_inset
+
+.
+ Otherwise, 
+\begin_inset Formula $x$
+\end_inset
+
+ is contained entirely in the last two pieces.
+ These remaining verticies form a subgraph, where each vertex has a unique
+ neighbor, and these can be colored with two colors.
+\end_layout
+
+\begin_layout Claim
+The independence number of the kneser graph is 
+\begin_inset Formula $\alpha\left(k\left(n,r\right)\right)={n-1 \choose r-1}$
+\end_inset
+
+, so 
+\begin_inset Formula $\alpha\left(P\right)=4$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The collection of 
+\begin_inset Formula $r$
+\end_inset
+
+-subsets which each contain 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+ is a set of this size.
+ It isn't hard to show this is optimal.
+\end_layout
+
+\begin_layout Claim
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wolknes"
+
+\end_inset
+
+The clique covering number is 
+\begin_inset Formula $q\left(k\left(n,r\right)\right)=\left\lceil \frac{{n \choose k}}{\left\lfloor \frac{n}{k}\right\rfloor }\right\rceil $
+\end_inset
+
+, 
+\begin_inset Formula $q\left(P\right)=5$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Claim
+\begin_inset Formula $\vartheta\left(k\left(n,r\right)\right)={n-1 \choose r-1}$
+\end_inset
+
+, and 
+\begin_inset Formula $\vartheta\left(k\left(n,r\right)\right)=\frac{n}{r}$
+\end_inset
+
+, so 
+\begin_inset Formula $\vartheta\left(P\right)=4,\vartheta\left(\overline{P}\right)=\frac{5}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is proven by Theorem 5 and some tricky algebra, but this avoids (or
+ at least obscures) creating explicit orthonormal representations, which
+ is the point of this example.
+\end_layout
+
+\begin_layout Section*
+Relations between Graph Constants
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\alpha\left(G\right)\chi\left(G\right)\geq\mid V\left(G\right)\mid$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Each color is an independent set, and a proper coloring colors every vertex.
+\end_layout
+
+\begin_layout Theorem
+For any graph 
+\begin_inset Formula $G$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha\left(G\right)\leq\vartheta\left(G\right)\leq\chi\left(\overline{G}\right)=q\left(G\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In an orthonormal representation, an independent set, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, of 
+\begin_inset Formula $G$
+\end_inset
+
+ must be sent to a collection of pairwise independent vectors.
+ For such vectors, it is easy to see that 
+\begin_inset Formula $\max_{v_{i}\in\alpha}\frac{1}{\left(\psi^{T}r\left(v_{i}\right)\right)^{2}}$
+\end_inset
+
+ is minimized when 
+\begin_inset Formula $\psi=\frac{\sum_{v_{i}\in\alpha}r\left(v_{i}\right)}{\sqrt{|V\left(G\right)|}}$
+\end_inset
+
+ (when 
+\begin_inset Formula $\psi$
+\end_inset
+
+ is between all the vectors.) In this case, 
+\begin_inset Formula $\frac{1}{\left(\psi^{T}r\left(v_{i}\right)\right)^{2}}=\mid\alpha\mid$
+\end_inset
+
+, and this lower bound holds for all orthonormal representations.
+ This shows 
+\begin_inset Formula $\alpha\left(G\right)\leq\vartheta\left(G\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Suppose we have clique cover of size 
+\begin_inset Formula $q\left(G\right)$
+\end_inset
+
+.
+ Define an orthonormal representation by choosing 
+\begin_inset Formula $q\left(G\right)$
+\end_inset
+
+ pairwise orthonormal vectors.
+ Send each clique to one of these vectors.
+ This provides an explicit orthonormal representation with valuation 
+\begin_inset Formula $q\left(G\right)$
+\end_inset
+
+.
+ The minimum over all orthonormal representations may be less.
+\end_layout
+
+\begin_layout Section*
+Orthonormal Representations
+\end_layout
+
+\begin_layout Standard
+We start with the graph 
+\begin_inset Formula $\overline{k\left(n,r\right)}$
+\end_inset
+
+ and construct an optimal orthonormal representation in dimension 
+\begin_inset Formula $n$
+\end_inset
+
+, with orthonormal basis 
+\begin_inset Formula $u_{1},\dots,u_{n}$
+\end_inset
+
+ (overloading the names of the basis elements with the elements of the universe)
+ The choice is obvious: disjoint sets need to go to orthonormal vectors.
+ Set 
+\begin_inset Formula $u_{i}^{T}r\left(v_{j}\right)=\frac{1}{\sqrt{r}}$
+\end_inset
+
+ if 
+\begin_inset Formula $u_{i}\in v_{j}$
+\end_inset
+
+, and 
+\begin_inset Formula $0$
+\end_inset
+
+ otherwise.
+ Set 
+\begin_inset Formula $\psi=\frac{1}{\sqrt{n}}\left(1,1,\dots,1\right)$
+\end_inset
+
+.
+ It is immediate that this is an orthonormal representation with valuation
+ 
+\begin_inset Formula $\frac{1}{\left(\psi^{T}r\left(v_{i}\right)\right)^{2}}=\frac{r\cdot n}{r^{2}}=\frac{n}{r}$
+\end_inset
+
+.
+ This O.R.
+ spans a space of dimension 
+\begin_inset Formula $5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+Given an orthonormal representation, we can define the cost of a vertex
+ to be 
+\begin_inset Formula $c\left(v\right)=\left(\psi_{1}^{T}\left(r_{1}\left(v_{i}\right)\right)\right)^{2}$
+\end_inset
+
+.
+ This corresponds to the quantum-mechanical probability of measuring 
+\begin_inset Formula $r_{1}\left(v_{1}\right)$
+\end_inset
+
+ when measuring from state 
+\begin_inset Formula $\psi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset citation
+LatexCommand cite
+key "knu93"
+
+\end_inset
+
+(Certification of Orthonormal Representations): if we have two orthonormal
+ representations 
+\begin_inset Formula $r_{1},r_{2}$
+\end_inset
+
+ of 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $\overline{G}$
+\end_inset
+
+ and for all 
+\begin_inset Formula $i\in V\left(G\right)$
+\end_inset
+
+ we have 
+\begin_inset Formula $c_{1}\left(v_{i}\right)=\frac{1}{\vartheta}$
+\end_inset
+
+, and we also have 
+\begin_inset Formula $\sum_{i}c_{1}\left(v_{i}\right)c_{2}\left(v_{i}\right)=1$
+\end_inset
+
+, then 
+\begin_inset Formula $\vartheta=\vartheta\left(G\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We have the explicit orthonormal representation 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+, so 
+\begin_inset Formula $\vartheta\left(G\right)\leq\vartheta$
+\end_inset
+
+.
+ For the other direction, we use an alternate definition 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+, 
+\begin_inset Formula $\vartheta\left(G\right)=\max_{Rep\left(\overline{G}\right)}\sum_{i}c\left(v_{i}\right).$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\min_{r\in O.R.\left(G\right)}\max_{i}\frac{1}{c_{r}\left(v_{i}\right)}=\vartheta\left(G\right)\leq\sum_{i}\vartheta c_{1}\left(v_{i}\right)c_{2}\left(v_{i}\right)=\sum_{i}c_{2}v_{i}\leq\max_{r\in O.R.\left(\overline{G}\right)}\sum_{i}c_{r}\left(v_{i}\right)=\vartheta\left(G\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The argument above also shows that certificates always exist.
+\end_layout
+
+\begin_layout Standard
+The next definition is crucial, and describes the relationship between 
+\begin_inset Formula $\vartheta\left(G\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\vartheta\left(\overline{G}\right)$
+\end_inset
+
+.
+ From the physical perspective, this will relate bell inequalities of completely
+ different experiments.
+ Can this relation be found using the Sheaf Theory?
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gro86"
+
+\end_inset
+
+Given a non-empty closed convex set 
+\begin_inset Formula $P\subset\mathbb{R}_{+}^{n}$
+\end_inset
+
+ with the property that 
+\begin_inset Formula $x\in P$
+\end_inset
+
+ and 
+\begin_inset Formula $0\leq x^{\prime}\leq x$
+\end_inset
+
+ then 
+\begin_inset Formula $x^{\prime}\in P$
+\end_inset
+
+, the antiblocker of 
+\begin_inset Formula $P$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+AB\left(P\right)=\left\{ x\in\mathbb{R}_{+}^{n}:y^{T}x\leq1\mbox{ for all }y\in P\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The condition that 
+\begin_inset Formula $0\leq x^{\prime}\leq x\implies x^{\prime}\in P$
+\end_inset
+
+ implies that 
+\begin_inset Formula $AB\left(AB\left(P\right)\right)=P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $P_{\vartheta}=\left\{ y\in\mathbb{R}_{+}^{n}\mid\sum_{i=1}^{n}y_{i}\leq\vartheta\right\} $
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $AB\left(P\right)=C_{\frac{1}{\vartheta}}=\left\{ x\in\mathbb{R}_{+}^{n}\mid\forall i,x_{i}\leq\frac{1}{\vartheta}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $y\in P_{\vartheta},x\in C_{\frac{1}{\vartheta}}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $y^{T}x=\sum_{i=1}^{n}y_{i}x_{i}\leq\frac{1}{\vartheta}\sum_{i=1}^{n}y_{i}\leq1$
+\end_inset
+
+.
+ This shows 
+\begin_inset Formula $C_{\frac{1}{\vartheta}}\subset AB\left(P_{\vartheta}\right)$
+\end_inset
+
+.
+ Conversely, if 
+\begin_inset Formula $x\not\in C_{\frac{1}{\vartheta}}$
+\end_inset
+
+ for some 
+\begin_inset Formula $i\in V\left(G\right)$
+\end_inset
+
+ 
+\begin_inset Formula $x_{i}>\frac{1}{\vartheta}$
+\end_inset
+
+.
+ Choose 
+\begin_inset Formula $y$
+\end_inset
+
+ such that 
+\begin_inset Formula $y_{j}=0$
+\end_inset
+
+ when 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+, and 
+\begin_inset Formula $y_{i}=\vartheta$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $y\in P_{\vartheta}$
+\end_inset
+
+, and 
+\begin_inset Formula $x^{T}y>1$
+\end_inset
+
+, so 
+\begin_inset Formula $x\notin AB\left(P_{\vartheta}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula $TH\left(G\right)=\left\{ \left(c\left(v_{i}\right),v_{i}\in V\left(G\right)\right)\in\mathbb{R}_{+}^{V\left(G\right)}\right\} $
+\end_inset
+
+.
+ These are assignable probabilities, which (claim) satisfy the hypotheses
+ of definition 6.
+ (Note, these probablities do not need to sum to 1.
+ We allow that some experiments have outcomes which are disregarded.
+ The problem is intractable otherwise.)
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $AB\left(TH\left(G\right)\right)=TH\left(\overline{G}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These concepts provide a geometric description of two definitions of 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ is the maximal of a linear functional over 
+\begin_inset Formula $TH\left(G\right)$
+\end_inset
+
+: 
+\begin_inset Formula $\vartheta\left(G\right)=\max_{\overline{O.R.}}\sum_{i=1}^{\left|V\left(G\right)\right|}c\left(v_{i}\right)$
+\end_inset
+
+.
+ This linear functional has hyperplanes as its level sets, and the optimal
+ value corresponds to a level set which lies tangent to 
+\begin_inset Formula $TH\left(G\right)$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula $\vartheta\left(G\right)$
+\end_inset
+
+ is the smallest simplex 
+\begin_inset Formula $S_{\vartheta}$
+\end_inset
+
+ such that 
+\begin_inset Formula $TH\left(G\right)\subset S_{\vartheta}$
+\end_inset
+
+.
+ If we take the antiblocker of this picture, we seek the reciprocal of the
+ largest cube 
+\begin_inset Formula $C_{\frac{1}{\vartheta}}$
+\end_inset
+
+ such that 
+\begin_inset Formula $C_{\frac{1}{\vartheta}}\subset AB\left(TH\left(G\right)\right)=TH\left(\overline{G}\right)$
+\end_inset
+
+.
+ This explains the formula 
+\begin_inset Formula $\vartheta\left(G\right)=\min_{O.R.}\max_{i}\frac{1}{c\left(v_{i}\right)}=\frac{1}{\max_{O.R.}\min_{i}c\left(v_{i}\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename antiblocker_def_theta.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Next, we give an orthonormal representation of 
+\begin_inset Formula $\vartheta\left(P\right)$
+\end_inset
+
+, which will certify the optimality of the orthonormal representation given
+ at the begining of this section.
+\end_layout
+
+\begin_layout Standard
+Assume a basis of size 
+\begin_inset Formula $10$
+\end_inset
+
+, 
+\begin_inset Formula $\left\{ e_{s_{1}},e_{s_{2}},\dots,e_{s_{10}}\right\} $
+\end_inset
+
+ labeled by the 
+\begin_inset Formula ${5 \choose 2}$
+\end_inset
+
+ subsets of the graph.
+ Let 
+\begin_inset Formula $\psi=\frac{1}{\sqrt{10}}\left(1,1,\dots,1\right)$
+\end_inset
+
+.
+ Finally, assume that we will have 
+\begin_inset Formula $e_{s_{i}}^{T}r\left(v_{j}\right)=x_{\mid s_{i}\cap v_{j}\mid}$
+\end_inset
+
+.
+ This is a plausible assumption, because it will result in vectors whose
+ orthongonality relations are invariant with respect to the automorphism
+ group of 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The fact that intersecting sets must be sent to orthonormal vectors translates
+ into the contstraint
+\begin_inset Formula 
+\[
+x_{0}^{2}+3x_{1}^{2}+4x_{0}x_{1}+2x_{1}x_{2}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+At the same time, we would like to minimize 
+\begin_inset Formula $\frac{10\cdot\left(x_{2}^{2}+6x_{1}^{2}+3x_{0}^{2}\right)}{\left(x_{2}+6x_{1}+3x_{0}\right)^{2}}$
+\end_inset
+
+.
+ According to Wolfram Alpha the minimum is 
+\begin_inset Formula $4$
+\end_inset
+
+, when 
+\begin_inset Formula $\left(x_{0},x_{1},x_{2}\right)=\left(1,-4-\sqrt{15},6+\sqrt{15}\right)$
+\end_inset
+
+, or when 
+\begin_inset Formula $\left(x_{0},x_{1},x_{2}\right)=\left(a,b,c\right)=\left(1,\sqrt{15}-4,6-\sqrt{15}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\begin{array}{cccccccccc}
+c & b & b & b & b & b & b & a & a & a\\
+b & c & b & b & b & a & a & b & b & a\\
+b & b & c & b & a & b & a & b & a & b\\
+b & b & b & c & a & a & b & a & b & b\\
+b & b & a & a & c & b & b & b & b & a\\
+b & a & b & a & b & c & b & b & a & b\\
+b & a & a & b & b & b & c & a & b & b\\
+a & b & b & a & b & b & a & c & b & b\\
+a & b & a & b & b & a & b & b & c & b\\
+a & a & b & b & a & b & b & b & b & c
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These vectors span a space of dimension 
+\begin_inset Formula $6$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+For any given graph 
+\begin_inset Formula $G$
+\end_inset
+
+, it is not true that all optimal orthogonal representations have the same
+ dimension.
+ For example, there are two optimal orthonormal representations of 
+\begin_inset Formula $C_{4}$
+\end_inset
+
+: 
+\begin_inset Formula $\left\{ \left(0,1\right),\left(0,1\right),\left(1,0\right),\left(1,0\right)\right\} $
+\end_inset
+
+ with handle 
+\begin_inset Formula $\left(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $\left\{ \left(a,a,0\right),\left(a,-a,0\right),\left(a,0,a\right),\left(a,0,-a\right)\right\} $
+\end_inset
+
+ with handle 
+\begin_inset Formula $\left(1,0,0\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, we apply the certification theorem.
+ For the O.R.
+ above, each cost is 
+\begin_inset Formula $\frac{1}{4}$
+\end_inset
+
+, and 
+\begin_inset Formula $\sum_{i=1}^{10}\frac{1}{4}\cdot\frac{2}{5}=1$
+\end_inset
+
+.
+ Hence, the O.R.
+ above is optimal.
+ Similarly, our 
+\begin_inset Formula $O.R.$
+\end_inset
+
+ of 
+\begin_inset Formula $\overline{K\left(n,r\right)}$
+\end_inset
+
+ can be seen to be optimal.
+\end_layout
+
+\begin_layout Section*
+Vector Colorings of Graphs
+\end_layout
+
+\begin_layout Definition
+Given a graph 
+\begin_inset Formula $G$
+\end_inset
+
+, we assign a unit vector to each vertex.
+ This time, we would like adjacent verticies to be sent to vectors whose
+ dot product is as negative as possible.
+ If 
+\begin_inset Formula $\chi\left(G\right)=k$
+\end_inset
+
+, then we can associate each color with a vector in the regular 
+\begin_inset Formula $k$
+\end_inset
+
+-simplex in 
+\begin_inset Formula $\mathbb{R}^{k+1}$
+\end_inset
+
+.
+ Such vectors have inner product 
+\begin_inset Formula $\frac{-1}{k-1}$
+\end_inset
+
+.
+ In light of this, we define 
+\begin_inset Formula $\chi_{vec}\left(G\right)=\min\left\{ k\mid v_{i}^{T}v_{j}=\frac{-1}{k-1}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\chi_{vec}\left(G\right)=\vartheta\left(\overline{G}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is proven by the fact that the two problems can be expressed as semidefinit
+e-programming duals of one another.
+ (The duality is between 
+\begin_inset Formula $\chi_{vec}$
+\end_inset
+
+ and 
+\begin_inset Formula $\max_{\overline{O.R.}}\sum\left(\psi^{T}v_{i}\right)^{2}$
+\end_inset
+
+.) Alternatively, there is a concrete way to move between optimal representations
+ of the coloring problem and optimal representations for 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proposition
+A vector coloring 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is optimal (having value 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+) iff 
+\begin_inset Formula $u_{i}=\frac{1}{\sqrt{\vartheta}}\left(\psi+\sqrt{\vartheta-1}x_{i}\right)$
+\end_inset
+
+ is an optimal Orthonormal representatio (also having value 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Proof
+If 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is an optimal vector-coloring for 
+\begin_inset Formula $G$
+\end_inset
+
+ with coloring number 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+, and 
+\begin_inset Formula $\psi$
+\end_inset
+
+ is some unit vector orthogonal to each 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, then we obtain an orthonormal representation 
+\begin_inset Formula $u_{i}=\frac{1}{\sqrt{\vartheta}}\left(\psi+\sqrt{\vartheta-1}x_{i}\right)$
+\end_inset
+
+.
+ First, observe that these are all unit vectors.
+ Secondly, let 
+\begin_inset Formula $u_{i}\neq u_{j}$
+\end_inset
+
+ correspond to non-adjacent verticies in 
+\begin_inset Formula $\overline{G}$
+\end_inset
+
+, so that 
+\begin_inset Formula $x_{i}^{T}x_{j}=\frac{-1}{\vartheta-1}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $u_{i}^{T}u_{j}=\frac{1}{\vartheta}\left(1+\left(\vartheta-1\right)\frac{-1}{\vartheta-1}\right)=0$
+\end_inset
+
+, so 
+\begin_inset Formula $u$
+\end_inset
+
+ is an orthogonal representation of 
+\begin_inset Formula $\overline{G}$
+\end_inset
+
+.
+ Also, we have 
+\begin_inset Formula $\frac{1}{\left(\psi^{T}u_{i}\right)^{2}}=\vartheta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Conversely, if we start with the orthonormal representation with value 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ (so 
+\begin_inset Formula $\vartheta=\frac{1}{\left(u_{i}^{T}\psi\right)^{2}}$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ We have not yet shown that it's always possible to achieve equality, but
+ it can be seen from the antiblocker picture.) we can recover the coloring
+ by 
+\begin_inset Formula $x_{i}=\frac{\sqrt{\vartheta}u_{i}-\psi}{\sqrt{\vartheta-1}}$
+\end_inset
+
+.
+ Now, if 
+\begin_inset Formula $x_{i}\sim x_{j}$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+, then 
+\begin_inset Formula $x_{i}^{T}x_{j}=\frac{-\sqrt{\vartheta}u_{i}^{T}\psi-\sqrt{\vartheta}u_{j}^{T}\psi+1}{\vartheta-1}=\frac{-1}{\vartheta-1}$
+\end_inset
+
+ so the coloring has value 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+.
+ Also, 
+\begin_inset Formula $x_{i}^{2}=\frac{\left(\vartheta+1\right)-2\sqrt{\vartheta}u_{i}\cdot\psi}{\vartheta-1}=1$
+\end_inset
+
+.
+ (There is a slight issue: if 
+\begin_inset Formula $u_{i}\cdot\psi=-\sqrt{\vartheta}$
+\end_inset
+
+, we need to reassign 
+\begin_inset Formula $u_{i}\mapsto-u_{i}$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Proof
+\begin_inset Graphics
+	filename coloring_representation.eps
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Next, we will provide an optimal vector coloring of 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Assume a basis of size 
+\begin_inset Formula $5$
+\end_inset
+
+, and that we will map 
+\begin_inset Formula $\star\star\circ\circ\circ\mapsto\left(a,a,b,b,b\right)$
+\end_inset
+
+, and extend this map by permutations of 
+\begin_inset Formula $S_{5}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $x,y$
+\end_inset
+
+ are two vector representations of intersecting sets, we would like to minimize
+\begin_inset Formula 
+\[
+min_{a,b}\frac{x^{T}y}{\left\Vert x\right\Vert \left\Vert y\right\Vert }=\frac{4ab+b^{2}}{2a^{2}+3b^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The minumum occurs at 
+\begin_inset Formula $a=-3,b=2$
+\end_inset
+
+, and gives 
+\begin_inset Formula 
+\[
+\frac{x^{T}y}{\left\Vert x\right\Vert \left\Vert y\right\Vert }=\frac{-24+4}{18+12}=-\frac{2}{3}=\frac{-1}{\frac{5}{2}-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using numpy.linalg, we can find that these vectors span a space of dimension
+ 
+\begin_inset Formula $4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, an optimal vector coloring of 
+\begin_inset Formula $\overline{P}$
+\end_inset
+
+ can be found by assuming a basis of size 
+\begin_inset Formula $10$
+\end_inset
+
+ (the same basis we used for 
+\begin_inset Formula $\vartheta\left(P\right)$
+\end_inset
+
+) and three variables, 
+\begin_inset Formula $x_{0},x_{1},x_{2}$
+\end_inset
+
+.
+ This gives us the optimization problem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+min_{x_{0},x_{1},x_{2}}\frac{x^{T}y}{\left\Vert x\right\Vert \left\Vert y\right\Vert }=\frac{x_{0}^{2}+3x_{1}^{2}+4x_{0}x_{1}+2x_{1}x_{2}}{3x_{0}^{2}+6x_{1}^{2}+x_{2}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The minimum (according to Wolfram) is found at 
+\begin_inset Formula $\left(-\frac{1}{\sqrt{18}},\frac{1}{\sqrt{18}},-\frac{1}{\sqrt{2}}\right)$
+\end_inset
+
+ and gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{x^{T}y}{\left\Vert x\right\Vert \left\Vert y\right\Vert }=\frac{\frac{1}{18}+\frac{3}{18}-4\frac{1}{18}-2\frac{1}{6}}{3\frac{1}{18}+6\frac{1}{18}+\frac{1}{2}}=\frac{-6}{18}=\frac{-1}{4-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This spans a space of dimension 
+\begin_inset Formula $5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Problem
+Since we have established that vector colorings correspond to orthonormal
+ representations, we actually have 
+\begin_inset Formula $2$
+\end_inset
+
+ orthonormal representations of the Petersen Graph and 
+\begin_inset Formula $2$
+\end_inset
+
+ for its complement.
+ Are these the same?
+\end_layout
+
+\begin_layout Section*
+Quantum Measurements
+\end_layout
+
+\begin_layout Standard
+We fix a finite-dimensional vector space, known as the state space.
+ Pure quantum states will be given by unit vectors in this space.
+\end_layout
+
+\begin_layout Quote
+A projective measurement is described by an observable, 
+\begin_inset Formula $M$
+\end_inset
+
+, a Hermitian operator on the state space of the system being observed.
+ The observable has a spectral decomposition 
+\begin_inset Formula 
+\[
+M=\sum_{m}mP_{m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+where 
+\begin_inset Formula $P_{m}$
+\end_inset
+
+ is the projector onto the eigenspace of 
+\begin_inset Formula $M$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ The possible outcomes of the measurement correspond to the eigenvalues,
+ 
+\begin_inset Formula $m$
+\end_inset
+
+, of the observable.
+ Upon measuring the state 
+\begin_inset Formula $\left|\psi\right\rangle $
+\end_inset
+
+, the probability of getting result 
+\begin_inset Formula $m$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+\left\langle \psi\right|P_{m}\left|\psi\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+Given that the outcome 
+\begin_inset Formula $m$
+\end_inset
+
+ occured, the state of the quantum system immediately after the measurement
+ is 
+\begin_inset Formula $\frac{P_{m}\left|\psi\right\rangle }{\sqrt{p\left(m\right)}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(From Nielsen and Chuang)
+\end_layout
+
+\begin_layout Standard
+(!) Naimark's Dilation Theorem states that all quantum measurements can
+ be viewed as projective measurements on a larger system.
+ The Spectral Theorem states that a Hermitian operator 
+\begin_inset Formula $M$
+\end_inset
+
+ always has a decomposition of the form 
+\begin_inset Formula 
+\[
+M=\sum_{m}mP_{m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $m$
+\end_inset
+
+ ranges over real numbers, and the ranges of the 
+\begin_inset Formula $P_{m}$
+\end_inset
+
+'s are pairwise orthogonal.
+ Conversely, if we start with a collection of pairwise orthogonal vectors
+ 
+\begin_inset Formula $\left\{ \left|m\right\rangle \right\} _{m=1}^{n}$
+\end_inset
+
+which span the state space, we can create a Hermitian operator which has
+ those vectors as its eigenvectors: 
+\begin_inset Formula $M=\sum_{m=1}^{n}m\left|m\right\rangle \left\langle m\right|$
+\end_inset
+
+.
+ Thus, when specifying a PVM, we only need to supply an Orthonormal Basis.
+\end_layout
+
+\begin_layout Example
+Polarizing sunglasses are an example of a PVM.
+\end_layout
+
+\begin_layout Example
+Light consists of an electric wave inducing a magnetic wave and vice versa.
+ The direction of the electric wave determines the polarization of the light.
+ A photon can be polarized in any 
+\begin_inset Formula $2$
+\end_inset
+
+-dimensional direction.
+ Polarized lenses in sunglasses will let a photon through if it is polarized
+ vertically, and will block it if it is polarized horizontally.
+ The photon hitting the lens is a measurement.
+ The state space is 
+\begin_inset Formula $2$
+\end_inset
+
+-dimensional, corresponding to the polarization directions.
+ We are lucky in this case that polarization between horizontal and vertical
+ directions has a direct physical meaning- that the light is polarized in
+ a diagonal direction.
+ Usually, this is not the case.
+ Let 
+\begin_inset Formula $\left|v\right\rangle $
+\end_inset
+
+ be the state of light which is polarized in the vertical direction and
+ 
+\begin_inset Formula $\left|h\right\rangle $
+\end_inset
+
+be the state of light polarized in the horizontal direction.
+ When a vertically polarized photon hits a vertically polarized lens, it
+ will surely pass through.
+ We represent the observable for this lens by 
+\begin_inset Formula $L=1\cdot\left|v\right\rangle \left\langle v\right|+0\cdot\left|h\right\rangle \left\langle h\right|$
+\end_inset
+
+.
+ Suppose we have light that is polarized diagonally, 
+\begin_inset Formula 
+\[
+\left|\psi\right\rangle =\frac{1}{\sqrt{2}}\left|v\right\rangle +\frac{1}{\sqrt{2}}\left|h\right\rangle 
+\]
+
+\end_inset
+
+The probability of the light passing through the lense is 
+\begin_inset Formula $\left(\left\langle v\right|+\left\langle h\right|\right)\left|v\right\rangle \left\langle v\right|\left(\left|v\right\rangle +\left|h\right\rangle \right)=\frac{1}{2}$
+\end_inset
+
+, and if it does so, its state is 
+\begin_inset Formula $\frac{\left|v\right\rangle \left\langle v\right|\frac{1}{\sqrt{2}}\left(\left|v\right\rangle +\left|h\right\rangle \right)}{\sqrt{\frac{1}{2}}}=\left|v\right\rangle $
+\end_inset
+
+.
+ Observe that the probability that the light passes through the lens is
+ the square of the inner product and the resultant state we're interested
+ in.
+ This is true in general.
+\end_layout
+
+\begin_layout Section*
+Forward Example: The CHSH Inequality
+\end_layout
+
+\begin_layout Standard
+There are two conceivable ways to use the machinery of 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ to investigate contextuality.
+ Usually we start with a collection of measurements and a linear functional
+ on the outcomes of these measurements.
+ By drawing the exclusion graph of the measurements, we can identify bounds
+ (Bell Inequalities) on these linear functionals.
+ We will see that these bounds are given by 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Alternatively, we can go backwards and search for graphs which have a large
+ gap between 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, then find orthonormal representations to realize these graphs as collections
+ of quantum experiments.
+ Ultimately, this is the direction that I would like to pursue, but we should
+ start with the standard technique first.
+\end_layout
+
+\begin_layout Standard
+As an example of the forward method, we will investigate the CHSH inequality.
+ Imagine Alice and Bob, separated in time and space and unable to communicate.
+ However, they share qubits which make up a quantum state.
+ That is, these particles may be entangled, so the total state space is
+ 
+\begin_inset Formula $4$
+\end_inset
+
+-dimensional.
+ Alice may choose between two measurements 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $A^{\prime}$
+\end_inset
+
+, and Bob may also choose between two measurements 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $B^{\prime}$
+\end_inset
+
+, so there are 
+\begin_inset Formula $4$
+\end_inset
+
+ total measurements which may occur: 
+\begin_inset Formula $\left\{ AB,A^{\prime}B,AB^{\prime},A^{\prime}B^{\prime}\right\} $
+\end_inset
+
+.
+ Each of Alice and Bob's local measurements yield an outcome of 
+\begin_inset Formula $0$
+\end_inset
+
+ or 
+\begin_inset Formula $1$
+\end_inset
+
+, so each total measurement has 
+\begin_inset Formula $4$
+\end_inset
+
+ possible outcomes.
+\end_layout
+
+\begin_layout Standard
+(One formulation of) the CHSH inequality begins with such a scenario and,
+ if Alice and Bob both choose their experiments uniformly at random, and
+ assigns a value of 
+\begin_inset Formula $1$
+\end_inset
+
+ whenever the their outcomes agree and 
+\begin_inset Formula $A,B$
+\end_inset
+
+ is not chosen, and a value of 
+\begin_inset Formula $-1$
+\end_inset
+
+ whenever their outcomes disagree and 
+\begin_inset Formula $A,B$
+\end_inset
+
+ is not chosen.
+ If 
+\begin_inset Formula $A,B$
+\end_inset
+
+ is chosen, then we reverse the valuations, so that 
+\begin_inset Formula $1$
+\end_inset
+
+ is assigned when their measurements disagree and 
+\begin_inset Formula $-1$
+\end_inset
+
+ when the agree.
+ The CHSH inequality concerns the expectation of such a valuation.
+ To formalize this, let 
+\begin_inset Formula $E\left(A^{(\prime)},B^{(\prime)}\right)$
+\end_inset
+
+ be the probability that the outcomes agree, given that 
+\begin_inset Formula $A^{(\prime)},B^{(\prime)}$
+\end_inset
+
+ is measured.
+ Then we have a value 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S=-E\left(A,B\right)+E\left(A^{\prime},B\right)+E\left(A,B^{\prime}\right)+E\left(A^{\prime},B^{\prime}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The CHSH inequality states that under classical assumptions 
+\begin_inset Formula 
+\[
+S\leq2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will see where this bound comes from.
+ Yet using quantum mechanics, we may achive a value of 
+\begin_inset Formula 
+\[
+S=2\sqrt{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Concretely, the measurements which realize this bound are: Alice may either
+ measure in the standard basis (
+\begin_inset Formula $A$
+\end_inset
+
+), or in the basis 
+\begin_inset Formula $\left\{ \frac{\left|0\right\rangle +\left|1\right\rangle }{\sqrt{2}},\frac{\left|0\right\rangle -\left|1\right\rangle }{\sqrt{2}}\right\} $
+\end_inset
+
+ (
+\begin_inset Formula $A^{\prime}$
+\end_inset
+
+).
+ Bob may either measure in the basis 
+\begin_inset Formula $\left\{ \frac{\cos\left(\frac{\pi}{8}\right)\left|0\right\rangle -\sin\left(\frac{\pi}{8}\right)\left|1\right\rangle }{\sqrt{2}},\frac{\sin\left(\frac{\pi}{8}\right)\left|0\right\rangle +\cos\left(\frac{\pi}{8}\right)\left|1\right\rangle }{\sqrt{2}}\right\} $
+\end_inset
+
+(
+\begin_inset Formula $B$
+\end_inset
+
+) and in the basis 
+\begin_inset Formula $\left\{ \frac{\cos\left(\frac{\pi}{8}\right)\left|0\right\rangle +\sin\left(\frac{\pi}{8}\right)\left|1\right\rangle }{\sqrt{2}},\frac{-\sin\left(\frac{\pi}{8}\right)\left|0\right\rangle +\cos\left(\frac{\pi}{8}\right)\left|1\right\rangle }{\sqrt{2}}\right\} $
+\end_inset
+
+ (
+\begin_inset Formula $B^{\prime}$
+\end_inset
+
+).
+ (!) (TODO: check that this is accurate.)
+\end_layout
+
+\begin_layout Standard
+To derive these bounds we first draw the exclusion graph for this scenario.
+ The verticies of the graph are the 
+\begin_inset Formula $16$
+\end_inset
+
+ total outcomes which may occur (or, if you like, pairs of measurements
+ and outcomes).
+ Edges are drawn between vertices which cannot cooccur.
+ For example, there is an edge between 
+\begin_inset Formula $\left(0,0\mid AB\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(1,0\mid AB^{\prime}\right)$
+\end_inset
+
+ because it is impossible that the local measurement 
+\begin_inset Formula $A$
+\end_inset
+
+ gives both 
+\begin_inset Formula $1$
+\end_inset
+
+ and 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename CHSHgraph.eps
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Once the exclusion graph, 
+\begin_inset Formula $H$
+\end_inset
+
+, is drawn, we obtain a weighting on the vertices which is determined by
+ our valuation.
+ For example, whenever the outcome 
+\begin_inset Formula $\left(1,1\mid AB^{\prime}\right)$
+\end_inset
+
+ occurs, we add 
+\begin_inset Formula $1$
+\end_inset
+
+ to our counter, and whenever 
+\begin_inset Formula $\left(0,0\mid AB\right)$
+\end_inset
+
+ occurs, we subtract 
+\begin_inset Formula $1$
+\end_inset
+
+ from our counter.
+ Thus, each vertex gets a weight 
+\begin_inset Formula $w:V\left(G\right)\to\mathbb{R}$
+\end_inset
+
+.
+ We can insist that these weights be positive by adding 
+\begin_inset Formula $1$
+\end_inset
+
+ to all the experiments so that our final weighting corresponds to giving
+ 
+\begin_inset Formula $w\left(v\right)=2$
+\end_inset
+
+ for the black vertices and 
+\begin_inset Formula $w\left(v\right)=0$
+\end_inset
+
+ for the white vertices.
+ Typically, and in this case, all of the weights will be the same, except
+ for those which are 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Our weighting therefore identifies a subgraph, 
+\begin_inset Formula $H^{\prime}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To derive the classical bounds, observe that any classical state of the
+ system must assign outcomes to all measurements, even those which have
+ not occured.
+ This means that a classical state will correspond to an independent set
+ in the graph.
+ It is intuitive (and easy to show, since 
+\begin_inset Formula $S$
+\end_inset
+
+ is a linear functional) 
+\begin_inset Formula $S$
+\end_inset
+
+ is maximized at a particular classical state rather than a mixture of them.
+ The maximum value for 
+\begin_inset Formula $S$
+\end_inset
+
+, classically, will correspond to an independent set and this independent
+ set will restrict to an independent set of 
+\begin_inset Formula $H^{\prime}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\alpha\left(H^{\prime}\right)=3$
+\end_inset
+
+, we can recover the classical bound on 
+\begin_inset Formula $S$
+\end_inset
+
+ by undoing our manipulations to the weighting.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S\leq_{classical}2\cdot3-4=2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With respect to quantum mechanics, each of our outcomes corresponds to an
+ eigenvector of an observable.
+ Thus, each vertex in 
+\begin_inset Formula $H^{\prime}$
+\end_inset
+
+ receives a vector.
+ If the two outcomes associated with these vectors are exclusive, then the
+ vectors must be orthogonal.
+ Otherwise, it would be possible to measure the system, obtain one outcome,
+ then measure the system again and obtain the other, exclusive outcome.
+\end_layout
+
+\begin_layout Standard
+Therefore, the eigenvectors of the observables form an orthogonal representation
+ of 
+\begin_inset Formula $\overline{H^{\prime}}$
+\end_inset
+
+.
+ Recall our dual definition for 
+\begin_inset Formula $\vartheta\left(G\right)=\max_{\overline{OR}}\sum_{i}c\left(v_{i}\right)$
+\end_inset
+
+ is exactly the maximum expected value in the quantum setting.
+ Thus, 
+\begin_inset Formula 
+\[
+S\leq2\cdot\vartheta\left(G\right)-4=2\cdot\left(2+\sqrt{2}\right)-4=2\sqrt{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this case, the bound is tight.
+ This is not always the case, because the dimension of the optimal orthonormal
+ representation may be too large.
+\end_layout
+
+\begin_layout Section*
+From Orthonormal Representations to Quantum Circuits
+\end_layout
+
+\begin_layout Standard
+Next, we would like to sketch how we might find collections of quantum circuits
+ which exhibit large amounts of contextuality.
+ This procedure comes with many unanswered questions.
+\end_layout
+
+\begin_layout Enumerate
+Choose an optimal coloring of the graph.
+\end_layout
+
+\begin_layout Enumerate
+Produce an optimal orthonormal representation for this graph.
+\end_layout
+
+\begin_layout Enumerate
+Each color corresponds to a collection of pairwise orthonormal vectors.
+ Extend each collection to an orthonormal basis.
+\end_layout
+
+\begin_layout Enumerate
+Find the unitary transformations from the given bases to the standard (computati
+onal) basis.
+\end_layout
+
+\begin_layout Enumerate
+All unitary transformations can be implemented by quantum gates.
+\end_layout
+
+\begin_layout Enumerate
+Our circuits consist of these unitary transformations, followed by measurement
+ in the computational basis.
+\end_layout
+
+\begin_layout Standard
+For a quantum circuit which takes some input state, 
+\begin_inset Formula $\psi$
+\end_inset
+
+, applies a unitary transformation, 
+\begin_inset Formula $U$
+\end_inset
+
+, then measures in the computational basis, the possible outcomes will be
+ the elements of the computational basis.
+ If 
+\begin_inset Formula $x$
+\end_inset
+
+ is one such basis element, the probability of measuring 
+\begin_inset Formula $x$
+\end_inset
+
+ is 
+\begin_inset Formula $\left\langle U\psi,x\right\rangle ^{2}=\left\langle \psi,U^{\star}x\right\rangle ^{2}$
+\end_inset
+
+.
+ It is easier to think of the unitary transformations as moving the computationa
+l basis than moving the state.
+ We will think of these quantum circuits as collections of bases under which
+ to measure a particular state.
+\end_layout
+
+\begin_layout Standard
+Since any two orthogonal vectors can be extended to a basis and we can perform
+ a measurement (which will reveal one outcome) in that basis, two orthogonal
+ vectors represent incompatible outcomes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename colored_Kneser.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we perform these steps, we will arive at 
+\begin_inset Formula $\chi\left(G\right)$
+\end_inset
+
+ quantum circuits whose statistics on the input state 
+\begin_inset Formula $\psi$
+\end_inset
+
+ cannot be explained classically.
+ Specifically, the results corresponding to vectors in our original Orthonormal
+ Representation (prior to extending to a basis) will occur more often than
+ is possible classically.
+ The dimension of the orthonormal representation, 
+\begin_inset Formula $d$
+\end_inset
+
+, is exactly the dimension of the hilbert space in which the quantum circuit
+ lives, so we will need 
+\begin_inset Formula $\left\lceil \log_{2}d\right\rceil $
+\end_inset
+
+ qubits to implement such a circuit.
+\end_layout
+
+\begin_layout Standard
+Some questions must be raised:
+\end_layout
+
+\begin_layout Enumerate
+Does the initial coloring matter?
+\end_layout
+
+\begin_layout Enumerate
+Can we effectively find the O.R.
+ in step 2?
+\end_layout
+
+\begin_layout Enumerate
+How can we control the dimension of the optimal orthogonal representation?
+ Can we use a non-optimal representation in a smaller dimension? (I have
+ a specific construction, due to Lovasz in mind.)
+\end_layout
+
+\begin_layout Enumerate
+How can we control the circuit complexity of our resultant unitaries?
+\end_layout
+
+\begin_layout Enumerate
+Does it matter how extend our colored sets to bases?
+\end_layout
+
+\begin_layout Enumerate
+Can any of these circuits be achieved using only Clifford gates? Can we
+ find a result linking the contextual resources (such as magic states) used
+ to form the unitaries, and the final contextuality?
+\end_layout
+
+\begin_layout Section*
+Graph Theory and Optimization
+\end_layout
+
+\begin_layout Standard
+If we have an exclusivity graph 
+\begin_inset Formula $G$
+\end_inset
+
+, we can consider the probabilities which may be assigned to vectors 
+\begin_inset Formula $\mathbb{R}_{+}^{V\left(G\right)}$
+\end_inset
+
+.
+ This identification also maps subgraphs of 
+\begin_inset Formula $G$
+\end_inset
+
+ to their incidence vectors.
+ Recall that independent sets of our graph correspond to the classical,
+ deterministic probablility distribution.
+ The collection of classical distributions is therefore described by convex
+ sums of our independent sets.
+ The set of classical states is given by the 
+\begin_inset Quotes eld
+\end_inset
+
+vertex polytope,
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $VP$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+VP\coloneqq CvxHull(\left\{ vec_{\alpha}\mid\alpha\mbox{ is independent}\right\} )
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We may express 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ (we will omit the argument 
+\begin_inset Formula $G$
+\end_inset
+
+ in the notation) as an optimization problem over this set.
+ Specifically, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ may be defined by an integer linear program.
+ We begin with variables 
+\begin_inset Formula $\left\{ x_{i}\in\left\{ 0,1\right\} \right\} _{i=1}^{V\left(G\right)}$
+\end_inset
+
+ which are intepreted as: 
+\begin_inset Formula $x_{i}=1$
+\end_inset
+
+ when 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ is in the indendent set in question.
+ Our program is then: 
+\begin_inset Formula 
+\[
+\alpha=\max_{x}\left(\sum_{i=1}^{V\left(G\right)}x_{i}\right)
+\]
+
+\end_inset
+
+such that 
+\begin_inset Formula $x_{i}\in\left\{ 0,1\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+x_{i}+x_{j}\leq1,\mbox{ for }v_{i}\sim v_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Equivalently, we could write our constraint as 
+\begin_inset Formula $x\in VP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This problem is intractible, so we might formulate a linear program by allowing
+ 
+\begin_inset Formula $x_{i}\in\left[0,1\right]$
+\end_inset
+
+ to take on a continum of values.
+ The resulting problem is tractible, but is too relaxed.
+ For example, 
+\begin_inset Formula $\left(\frac{1}{2},\frac{1}{2},\frac{1}{2}\right)$
+\end_inset
+
+ is a solution to the triangle.
+ Thus, we choose a different generalization of the constraints:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\alpha^{\star}=\max_{x}\left(\sum_{i=1}^{V\left(G\right)}x_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+such that 
+\begin_inset Formula $x_{i}\in\left[0,1\right]$
+\end_inset
+
+ and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sum_{i\in K}x_{i}\leq1\mbox{ for all cliques \ensuremath{K}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this problem, our feasible set is the 
+\begin_inset Quotes eld
+\end_inset
+
+fractional vertex packing polytope
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+FVP=\left\{ x\mid\sum_{i\in K}x_{i}\leq1,\mbox{\forall\ cliques }K\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This program is important enough to get a name: 
+\begin_inset Formula $\alpha^{\star}$
+\end_inset
+
+, the fractional packing number.
+ Moreover, the 
+\begin_inset Formula $\alpha^{\star}\neq\alpha$
+\end_inset
+
+, since, for the 
+\begin_inset Formula $5$
+\end_inset
+
+-cycle we have the solution 
+\begin_inset Formula $\left(\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The fractional packing number has a nice interpretation: If our variables
+ 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ correspond to probabilities, then our constraint enforces that the sum
+ of probabilities of pairwise exclusive events be bounded by 
+\begin_inset Formula $1$
+\end_inset
+
+, which is implied by one of Kolmogorov's Axioms for probability.
+ General probabilistic models have their Bell Inequalities bounded by 
+\begin_inset Formula $\alpha^{\star}$
+\end_inset
+
+ rather than 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This problem is 
+\begin_inset Formula $NP$
+\end_inset
+
+-hard because there may be exponentially many cliques.
+ For perfect graphs, however, 
+\begin_inset Formula $\alpha=\alpha^{\star}$
+\end_inset
+
+ and both are polynomial-time computable.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $FVP\left(\overline{G}\right)=AB\left(VP\left(G\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $x\in FVP\left(\overline{G}\right)$
+\end_inset
+
+.
+ If we show that 
+\begin_inset Formula $x^{T}v_{\alpha}\leq1$
+\end_inset
+
+, for all indepdent sets 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, we will have shown that 
+\begin_inset Formula $FVP\left(\overline{G}\right)\subset AB\left(VP\left(G\right)\right)$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is an independent set of 
+\begin_inset Formula $G$
+\end_inset
+
+, it is also a clique of 
+\begin_inset Formula $\overline{G}$
+\end_inset
+
+, so 
+\begin_inset Formula $\sum_{a\in\alpha}x_{a}+\sum_{b\in G-\alpha}x_{b}\cdot0\leq1+0=1$
+\end_inset
+
+.
+ The argument works conversely as well: If 
+\begin_inset Formula $x^{T}y\leq1$
+\end_inset
+
+ for all 
+\begin_inset Formula $y\in VP\left(G\right)$
+\end_inset
+
+, then 
+\begin_inset Formula $x^{T}v_{\alpha}\leq1$
+\end_inset
+
+ for all independent 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Again, since these independent 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+ become cliques 
+\begin_inset Formula $\omega$
+\end_inset
+
+ in 
+\begin_inset Formula $\overline{G}$
+\end_inset
+
+, our constraints precisely name 
+\begin_inset Formula $FVP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Linear Programming Duality
+\end_layout
+
+\begin_layout Standard
+Every linear program comes with a dual program with the same optimum.
+ The linear program
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mbox{Max}_{x}\left\{ c^{T}x\mid Ax\leq b,x\geq0\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+comes with the dual
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mbox{Min}_{y}\left\{ b^{T}y\mid A^{T}y\geq c,y\geq0\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If the primal problem asks: 
+\begin_inset Quotes eld
+\end_inset
+
+Given my ingredients and recipies for baking various cakes and the profits
+ for each type of cake, how much of each cake should I make in order to
+ maximize my profit? And what is my final profit?
+\begin_inset Quotes erd
+\end_inset
+
+ Then the dual problem asks 
+\begin_inset Quotes eld
+\end_inset
+
+What is the minimum amount of money I would accept to sell my ingredients,
+ given that I could use them to make cakes and later sell these cakes? And
+ how much money would I make from doing this.
+\begin_inset Quotes erd
+\end_inset
+
+ In this formulation, it is intuitive that the primal and dual problems
+ will have the same optimal.
+\end_layout
+
+\begin_layout Standard
+Another way to think about the dual program that it provides upper bounds
+ for the primal problem.
+ In this perspective, the new variables 
+\begin_inset Formula $y$
+\end_inset
+
+ refer to different ways to linearly combine our constraint equation to
+ achive(on the left side) a linear functionals 
+\begin_inset Formula $A^{T}y$
+\end_inset
+
+ which is an upper bound on our primal functional, 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ Meanwhile, on the right side of the inequality, we get 
+\begin_inset Formula $b^{T}y$
+\end_inset
+
+, so this is an upper bound.
+\end_layout
+
+\begin_layout Standard
+A third way to think about the dual problem is via Lagrange Multipliers.
+ When optimizing a function over a feasible set, at the optimal solution,
+ the direction in which the function increases the fastest increase must
+ be parallel to the normal of the feasible set.
+ The level sets of our objective function are hyperplanes, and our feasible
+ set is a polytope.
+ Clearly, maxima will occur at a vertex of the polytope.
+ At this point, we will be able to combine the normals (which define the
+ facets adjacent to the vertex) linearly, with non-negative coefficients
+ to arrive at the normal of the objective function.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(x,\lambda\right)=c^{T}x-\sum_{i}\lambda_{i}a_{i}^{T}x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the dual formulation of 
+\begin_inset Formula $\alpha^{\star}$
+\end_inset
+
+, we want to minimize the sum of cliques, such that the sum of cliques over
+ any single vertex is at least one.
+ Let 
+\begin_inset Formula $\left\{ y_{i}\in\left[0,1\right]\right\} _{N}$
+\end_inset
+
+, where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the total number of cliques in the graph.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\alpha^{\star}=\min_{y}\left(\sum_{i=1}^{N}y_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+under the constraints 
+\begin_inset Formula $y_{i}\in\left[0,1\right]$
+\end_inset
+
+.
+ For every vertex 
+\begin_inset Formula $v$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\sum_{y_{i}\ni v}y_{i}\geq1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observe that if we form the associated integer linear program by restricting
+ 
+\begin_inset Formula $y_{i}\in\left\{ 0,1\right\} $
+\end_inset
+
+, then we will have the clique covering problem, so 
+\begin_inset Formula $\alpha^{\star}$
+\end_inset
+
+ may also be also called 
+\begin_inset Formula $q^{\star}$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ are an example of dual integer linear programs which do not agree.
+\end_layout
+
+\begin_layout Section*
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ as a Semidefinite Program
+\end_layout
+
+\begin_layout Standard
+Semidefinite programs are 
+\begin_inset Quotes eld
+\end_inset
+
+vector relaxations.
+\begin_inset Quotes erd
+\end_inset
+
+ Instead of integers or real numbers, our variables range over vectors.
+ In the case of 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+, these are our Orthonormal Representations.
+ These collections of vectors are in perfect correspondence with positive
+ semidefinite matricies.
+ A symmetric matrix 
+\begin_inset Formula $m\in\mathbb{R}^{n}\times\mathbb{R}^{n}$
+\end_inset
+
+ is called positive semidefinite if 
+\begin_inset Formula $\left\langle x,mx\right\rangle \geq0$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in\mathbb{R}^{n}$
+\end_inset
+
+.
+ If this is the case, then we can define a new inner product as 
+\begin_inset Formula $\left(x,y\right)=\left\langle x,my\right\rangle $
+\end_inset
+
+, sans positive-definiteness.
+ To look at the entries of 
+\begin_inset Formula $m$
+\end_inset
+
+, we can set 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ to be members of the basis.
+ The 
+\begin_inset Formula $ij^{th}$
+\end_inset
+
+ element of 
+\begin_inset Formula $m$
+\end_inset
+
+ will be 
+\begin_inset Formula $m_{ij}=\left\langle e_{i},me_{j}\right\rangle =\left(e_{i},e_{j}\right)$
+\end_inset
+
+.
+ In other words, the matrix 
+\begin_inset Formula $m$
+\end_inset
+
+ tells us how our new inner product behaves on our basis elements.
+ The argument also works conversely, so positive semidefinite matricies
+ are in 
+\begin_inset Formula $1-1$
+\end_inset
+
+ correspondence with gram matricies.
+\end_layout
+
+\begin_layout Standard
+A semidefinite program is of the form
+\begin_inset Formula 
+\[
+Min{}_{X}\left(C\cdot X\right)=Min_{X}\left(TR\left(CX\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+such that 
+\begin_inset Formula $X$
+\end_inset
+
+ satisfies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X\succeq0,\left\{ D_{i}\cdot X=p_{i}\right\} _{i=1}^{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In such a problem, we will be supplied with the 
+\begin_inset Formula $k$
+\end_inset
+
+ 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ symmetric matricies 
+\begin_inset Formula $C$
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ D_{i}\right\} $
+\end_inset
+
+, along with real numbers 
+\begin_inset Formula $\left\{ p_{i}\right\} _{i=1}^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The notation 
+\begin_inset Formula $X\succeq0$
+\end_inset
+
+ states that 
+\begin_inset Formula $X$
+\end_inset
+
+ be positive semidefinite.
+ As in the linear programming case, our objective function is some linear
+ function of the variables.
+ We are allowed linear equality constraints on the entries of 
+\begin_inset Formula $X$
+\end_inset
+
+, which are in effect constraints of linear combinations of dot products
+ of our vector assignments.
+\end_layout
+
+\begin_layout Standard
+Rather than supplying the linear equality constraints 
+\begin_inset Formula $\left\{ D_{i}\cdot X=p_{i}\right\} _{i=1}^{k}$
+\end_inset
+
+, we could express the feasible set directly, in the form 
+\begin_inset Formula $X\left(y\right)=G_{0}+\sum_{i=1}^{m}\left(y_{i}G_{i}\right)$
+\end_inset
+
+ ard requiring that 
+\begin_inset Formula $X\left(y\right)\succeq0$
+\end_inset
+
+.
+ Set 
+\begin_inset Formula $d_{i}=C\cdot G_{i}$
+\end_inset
+
+.
+ We obtain one equivalent formulation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Min_{y}d^{T}y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X\left(y\right)\succeq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+We can express 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ as a semidefinite program
+\end_layout
+
+\begin_layout Proof
+Consider the following program, which computes the vector chromatic number:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\frac{-1}{\vartheta-1}=\mbox{min}_{m}\left(\alpha\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+such that 
+\begin_inset Formula $m\succeq0$
+\end_inset
+
+ and
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+m_{ij}=\alpha\mbox{ if }v_{i}\sim v_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+m_{ii}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+It's clear that the program computes the vector chromatic number, but we
+ have to justify that it is a semidefinite optimization problem, as defined
+ above.
+ In particular, the constraint 
+\begin_inset Formula $m_{ij}=\alpha$
+\end_inset
+
+ is problematic, since 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is our objective function.
+ We can replace these constraints with a set of constraints which requires
+ that all 
+\begin_inset Formula $m_{ij}$
+\end_inset
+
+ where 
+\begin_inset Formula $v_{i}\sim v_{j}$
+\end_inset
+
+ be equal.
+ To do this, order the edges 
+\begin_inset Formula $e_{1},e_{2},\dots,e_{E\left(G\right)}$
+\end_inset
+
+ arbitrarily, and require that 
+\begin_inset Formula $m_{e_{i}}=m_{e_{i+1}}$
+\end_inset
+
+.
+ Rather than minimizing 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, we can minimize 
+\begin_inset Formula $m_{e_{1}}$
+\end_inset
+
+.
+ Then we arrive at an equivalent problem, which is clearly semidefinite.
+ Let 
+\begin_inset Formula $y\in\mathbb{R}^{k+1}$
+\end_inset
+
+, and 
+\begin_inset Formula $d=\left(1,0,0,\dots\right)$
+\end_inset
+
+ Then
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\frac{-1}{\vartheta-1}=\min\left(d^{T}y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+subject to
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+I+y_{1}A+\sum_{i=2}^{k}y_{i}D_{i}=M\left(y\right)\succeq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Here, 
+\begin_inset Formula $J$
+\end_inset
+
+ is the matrix of all 
+\begin_inset Formula $1$
+\end_inset
+
+'s, 
+\begin_inset Formula $A\in\mathbb{R}^{n\times n}$
+\end_inset
+
+ is the adjacency matrix of the graph, which which has the 
+\begin_inset Formula $i,j^{th}$
+\end_inset
+
+ entry 
+\begin_inset Formula $1$
+\end_inset
+
+ when 
+\begin_inset Formula $v_{i}\sim v_{j}$
+\end_inset
+
+, and 
+\begin_inset Formula $0$
+\end_inset
+
+ otherwise.
+ 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+'s are the collection of matricies with 
+\begin_inset Formula $1$
+\end_inset
+
+ entry of 
+\begin_inset Formula $1$
+\end_inset
+
+ in the 
+\begin_inset Formula $i,j^{th}$
+\end_inset
+
+ entry where 
+\begin_inset Formula $v_{i}\not\sim v_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Observe that if we scale the solution to the vector coloring problem so
+ that each vector has length 
+\begin_inset Formula $\sqrt{\vartheta-1}$
+\end_inset
+
+, then this will imply that the dot products of adjacent vectors are 
+\begin_inset Formula $-1$
+\end_inset
+
+.
+ And conversely, if we have a solution to the scaled problem we can recover
+ a solution to the original problem.
+ Hence,
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\vartheta-1=\frac{1}{n}I\cdot Z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+subject to the constraints that
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+Z_{11}=Z_{22}=\dots=Z_{n,n};\mbox{ }Z_{ij}=-1\mbox{ }\mbox{if }v_{i}\sim v_{j};Z\succeq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Suppose we have semidefinite program in the second formulation.
+ Its dual is defined as
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula 
+\[
+Max_{Z}\left(-G_{0}\cdot Z\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+such that
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula 
+\[
+Z\succeq0,\left\{ G_{i}\cdot Z=d_{i}\right\} _{i=1}^{m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Just as the linear programming duality arises from finding bounds on the
+ optimal values for the primal program, the duality in semidefinite programming
+ also arises in this way, since
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d^{T}y+Z\cdot G_{0}=\sum_{i=1}^{m}\left(Z\cdot G_{i}\right)y_{i}+Z\cdot G_{0}=Z\cdot G\left(y\right)\geq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d^{T}y\geq-G_{0}\cdot Z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In fact, we have equality, assuming that there is a positive definite feasible
+ matrix in either the primal or dual problem.
+ We can see that this occurs exactly when 
+\begin_inset Formula $Z\cdot G\left(y\right)=0$
+\end_inset
+
+.
+ (!) This is the antiblocker theorem.
+\end_layout
+
+\begin_layout Theorem
+We can express 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ as a semidefinite program:
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula 
+\[
+\vartheta=\max\left(J\cdot B\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+subject to 
+\begin_inset Formula 
+\[
+b_{ij}=0\mbox{ if }v_{i}\sim v_{j};Tr\left(B\right)=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Where 
+\begin_inset Formula $J$
+\end_inset
+
+ is the 
+\begin_inset Formula $1$
+\end_inset
+
+'s matrix (so 
+\begin_inset Formula $J\cdot B$
+\end_inset
+
+) is the sum of entries in 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+We will take the dual of the semidefinite program is Theorem 
+\begin_inset Formula $27$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\frac{-1}{\vartheta-1}=\max_{Z}\left(-I\cdot Z\right)=\max_{Z}-Tr\left(Z\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+subject to the constraints
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+A\cdot Z=1,\left\{ D_{i}Z=0\right\} _{i=1}^{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+The second set of constraints implies that 
+\begin_inset Formula $Z_{ij}$
+\end_inset
+
+ is 
+\begin_inset Formula $0$
+\end_inset
+
+ whenever 
+\begin_inset Formula $v_{i}\sim v_{j}$
+\end_inset
+
+.
+ It follows that 
+\begin_inset Formula $J\cdot Z=\left(I+A\right)\cdot Z=Tr\left(Z\right)+A\cdot Z$
+\end_inset
+
+.
+ Thus, for the optimal 
+\begin_inset Formula $Z^{\star}$
+\end_inset
+
+, 
+\begin_inset Formula $J\cdot Z=1+\frac{1}{\vartheta-1}=\frac{\vartheta}{\vartheta-1}$
+\end_inset
+
+.
+ Thus, if we scale up all the entries in 
+\begin_inset Formula $Z$
+\end_inset
+
+ by 
+\begin_inset Formula $\vartheta-1$
+\end_inset
+
+, we arrive at the desired semidefinite program.
+\end_layout
+
+\begin_layout Remark
+The feasible set 
+\begin_inset Formula $B$
+\end_inset
+
+ is related to the set of Orthonormal Representations in the 
+\begin_inset Formula $max$
+\end_inset
+
+ definition of 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+.
+ Given an O.R., one can compute its gram matrix and obtain a PSD matrix 
+\begin_inset Formula $C$
+\end_inset
+
+ such that 
+\begin_inset Formula $Tr\left(C\right)=n$
+\end_inset
+
+.
+ It is not obvious how to interpret the objective function, 
+\begin_inset Formula $J\cdot B$
+\end_inset
+
+ as relating to 
+\begin_inset Formula $\sum_{i\in V\left(G\right)}\left(\psi^{T}v_{i}\right)^{2}$
+\end_inset
+
+.
+ Lovasz proves our max definition from the SDP.
+ In the course of his proof, he appears(!) to show that the optimal handle
+ is always 
+\begin_inset Formula $\psi^{\star}=\frac{\sum v_{i}}{\left|\sum v_{i}\right|}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section*
+The Ellipsoid Method: Convex Optimization is Polynomial Time
+\end_layout
+
+\begin_layout Standard
+There is a general technique to optimize any linear objective function over
+ any convex feasible set.
+ This technique is slow in practice, but runs in polynomial time.
+ In particular, suggests that semidefinite optimization problems may be
+ solved efficiently.
+ A correct analysis of the technique is complicated because we need to take
+ rounding errors into account.
+ Since the optimal may not have a terminating decimal representation, we
+ need to allow solutions which only approximate that optimal value up to
+ 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+, and we need to show that this approximation is polynomial in 
+\begin_inset Formula $\log\left(\frac{1}{\epsilon}\right)$
+\end_inset
+
+.
+ Furthermore, we need to take into account rounding errors in the representation
+ convex set itself.
+ This is all very tedious, so I won't do it.
+\end_layout
+
+\begin_layout Standard
+In the following, a convex body will be modeled as an oracle which, given
+ a point, will either assert that the point is in the convex body, or else
+ it will return a separating hyperplane between the point and the body.
+\end_layout
+
+\begin_layout Standard
+First, suppose that we have some convex body 
+\begin_inset Formula $C$
+\end_inset
+
+ and we wish to optimize 
+\begin_inset Formula $\max_{x\in C}\left(a^{T}x\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $\left\Vert a\right\Vert =1$
+\end_inset
+
+ Suppose we have a function 
+\begin_inset Formula $sample\left(C\right)$
+\end_inset
+
+ which takes a convex body and returns a point in that set or correctly
+ asserts that 
+\begin_inset Formula $C$
+\end_inset
+
+ is empty.
+ We must also assume that 
+\begin_inset Formula $C$
+\end_inset
+
+ contains a ball 
+\begin_inset Formula $b_{0,r}$
+\end_inset
+
+ and is contained in a ball 
+\begin_inset Formula $B_{0,R}$
+\end_inset
+
+.
+ Then we can solve the optimization problem by means of a binary search.
+ We know that 
+\begin_inset Formula $0\leq\max_{x}\left\{ a^{T}x\mid x\in C\right\} \leq R$
+\end_inset
+
+.
+ We can sample 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ and calculate 
+\begin_inset Formula $a^{T}x_{0}$
+\end_inset
+
+.
+ Then, we consider 
+\begin_inset Formula $C_{1}=C\cap\left\{ x\mid a^{T}x\geq\frac{a^{T}x_{0}+R}{2}\right\} $
+\end_inset
+
+.
+ We can sample again, and if we find a point, 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, we known that 
+\begin_inset Formula $\max_{x\in C}\left(a^{T}x\right)\geq a^{T}x_{1}$
+\end_inset
+
+.
+ Otherwise, we know 
+\begin_inset Formula $\max_{x\in C}\left(a^{T}x\right)\leq a^{T}x_{1}$
+\end_inset
+
+.
+ In either case, we have halved the range of possible values for 
+\begin_inset Formula $\max_{x\in C}\left(a^{T}x\right)$
+\end_inset
+
+, so it only takes one more iteration of the algorithm to calculate one
+ more bit of the output.
+ In other words, it is polynomial-time.
+\end_layout
+
+\begin_layout Standard
+Thus, if we can find points inside a convex body, 
+\begin_inset Formula $C$
+\end_inset
+
+, we can optimize over 
+\begin_inset Formula $C$
+\end_inset
+
+ in polynomial time.
+ The ellipsoid method is a technique to find a point inside a convex body.
+ If we know nothing about 
+\begin_inset Formula $C$
+\end_inset
+
+, we are left guessing at points and the problem is hopeless.
+ We must assume we are told our convex body is contained in a ball 
+\begin_inset Formula $S\left(0,B\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The ellipsoid method works via ellipsoids whose volumes shrink by constant
+ factors.
+ The first ellipsoid is the ball 
+\begin_inset Formula $S\left(0,B\right).$
+\end_inset
+
+ Then, we guess a point at the center of the ellipsoid, 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ If this fails, the oracle will return a separating hyperplane to us.
+ Call the halfspace containing 
+\begin_inset Formula $C$
+\end_inset
+
+, 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ We construct a new ellipsoid, which is the smallest ellipsoid containing
+ 
+\begin_inset Formula $S\left(0,B\right)\cap H$
+\end_inset
+
+.
+ Generally, we guess at the center of the current ellipsoid, and if we're
+ wrong, use the resulting hyperplane to construct an new ellipsoid with
+ less volume by a constant (depending on the dimension) factor.
+\end_layout
+
+\begin_layout Section*
+Interior Point Methods
+\end_layout
+
+\begin_layout Standard
+Linear programming problems are usually solved by the simplex method, where
+ the vertices of the feasible polytope are examined systematically.
+ Our semidefinite programs do not have polytopes as feasible sets, so there
+ are infinitely many vertices to check.
+ Instead, we use interior point methods, where we search the interior of
+ the feasible set.
+ To do this, we assign a barrier function which is infinite at the boundary:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\phi\left(Z\right)=\begin{cases}
+\log\left(\det Z^{-1}\right) & \mbox{ if }Z>0\\
+\infty & else
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "contextualitybib"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
