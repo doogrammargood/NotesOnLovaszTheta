@@ -1249,7 +1249,7 @@ A vector coloring
 \begin_inset Formula $u_{i}=\frac{1}{\sqrt{\vartheta}}\left(\psi+\sqrt{\vartheta-1}x_{i}\right)$
 \end_inset
 
- is an optimal Orthonormal representatio (also having value 
+ is an optimal Orthonormal representation (also having value 
 \begin_inset Formula $\vartheta$
 \end_inset
 
@@ -1588,10 +1588,13 @@ Given that the outcome
 \end_inset
 
 
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nie10"
 
-\begin_layout Standard
-(From Nielsen and Chuang)
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1735,7 +1738,14 @@ There are two conceivable ways to use the machinery of
 , then find orthonormal representations to realize these graphs as collections
  of quantum experiments.
  Ultimately, this is the direction that I would like to pursue, but we should
- start with the standard technique first.
+ start with the standard technique
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cab14"
+
+\end_inset
+
+ first.
 \end_layout
 
 \begin_layout Standard
@@ -2632,7 +2642,14 @@ Another way to think about the dual program that it provides upper bounds
 \begin_inset Formula $b^{T}y$
 \end_inset
 
-, so this is an upper bound.
+, so this is an upper bound
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tal13"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -2946,7 +2963,7 @@ We can express
 \begin_inset Formula $\vartheta$
 \end_inset
 
- as a semidefinite program
+ as a semidefinite program.
 \end_layout
 
 \begin_layout Proof
@@ -3170,7 +3187,14 @@ Z_{11}=Z_{22}=\dots=Z_{n,n};\mbox{ }Z_{ij}=-1\mbox{ }\mbox{if }v_{i}\sim v_{j};Z
 
 \begin_layout Definition
 Suppose we have semidefinite program in the second formulation.
- Its dual is defined as
+ Its dual is defined
+\begin_inset CommandInset citation
+LatexCommand cite
+key "vand96"
+
+\end_inset
+
+ as
 \end_layout
 
 \begin_layout Definition
@@ -3247,7 +3271,14 @@ We can express
 \begin_inset Formula $\vartheta$
 \end_inset
 
- as a semidefinite program:
+ as a semidefinite program
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lov78"
+
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Theorem
@@ -3304,7 +3335,7 @@ We will take the dual of the semidefinite program is Theorem
 \begin_layout Proof
 \begin_inset Formula 
 \[
-\frac{-1}{\vartheta-1}=\max_{Z}\left(-I\cdot Z\right)=\max_{Z}-Tr\left(Z\right)
+\frac{-1}{\vartheta-1}=\max_{Z}\left(-I\cdot Z\right)=\max_{Z}\left(-Tr\left(Z\right)\right)
 \]
 
 \end_inset
@@ -3398,7 +3429,14 @@ The feasible set
 \end_inset
 
 .
- Lovasz proves our max definition from the SDP.
+ Lovasz proves
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lov78"
+
+\end_inset
+
+ our max definition from the SDP.
  In the course of his proof, he appears(!) to show that the optimal handle
  is always 
 \begin_inset Formula $\psi^{\star}=\frac{\sum v_{i}}{\left|\sum v_{i}\right|}$
@@ -3406,6 +3444,79 @@ The feasible set
 
 .
  
+\end_layout
+
+\begin_layout Section*
+A consequence of the 'max' semidefinite program (!)
+\end_layout
+
+\begin_layout Standard
+Our first, 'min' semidefinite program resulted from our ability to phrase
+ the min definition of 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ in a way that got rid of 
+\begin_inset Formula $\psi$
+\end_inset
+
+ and resulted in a linear objective function.
+ This was the vector coloring problem.
+ It would be nice to be able to remove 
+\begin_inset Formula $\psi$
+\end_inset
+
+ from the max definition and arrive at the max semidefinite program through
+ an arrangement of vectors, but there are difficulties.
+ The following inequality comes from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lov78"
+
+\end_inset
+
+, and is a nice application of Cauchy Schwarz.
+ Let 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ be some rescaling of 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\sum_{i}w_{i}^{2}=1$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+\left(\sum_{i=1}^{n}\left(\psi^{T}v_{i}\right)^{2}\right)=\left(\sum_{i=1}^{n}w_{i}^{2}\right)\left(\sum_{i=1}^{n}\left(\psi^{T}v_{i}\right)^{2}\right)\geq\left(\sum_{i=1}^{n}\left|w_{i}\right|\psi^{T}v_{i}\right)^{2}=\left(\sum_{i=1}^{n}\psi^{T}w_{i}\right)^{2}\geq\left(\sum_{i=1}^{n}w_{i}\right)^{2}=\sum_{i,j}w_{i}^{T}w_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first inequality can be made to hold if we select our scaling such that
+ 
+\begin_inset Formula $w_{i}^{2}\propto\left(\psi^{T}v_{i}\right)^{2}$
+\end_inset
+
+.
+ The second inequality can be made to hold if we select 
+\begin_inset Formula $\psi$
+\end_inset
+
+ to be a unit vector in the direction of 
+\begin_inset Formula $\sum_{i=1}^{n}w_{i}$
+\end_inset
+
+.
+ Mysteriously, we can make both of these true at the same time.
 \end_layout
 
 \begin_layout Section*
@@ -3433,7 +3544,14 @@ There is a general technique to optimize any linear objective function over
 .
  Furthermore, we need to take into account rounding errors in the representation
  convex set itself.
- This is all very tedious, so I won't do it.
+ The following description comes from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "reed01"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3575,6 +3693,74 @@ The ellipsoid method works via ellipsoids whose volumes shrink by constant
  Generally, we guess at the center of the current ellipsoid, and if we're
  wrong, use the resulting hyperplane to construct an new ellipsoid with
  less volume by a constant (depending on the dimension) factor.
+ These ellipsoids do not work in practice, but a simple (if you ignore precision
+) way to argue that optimization over a convex body can be achieved in polynomia
+l time.
+\end_layout
+
+\begin_layout Standard
+The ellipsoid method requires a separation oracle.
+ For a semidefinite programming problem, we must be able to decide whether
+ or not a point is in the feasible set, and if not, then we should be able
+ to compute a separating hyperplane.
+ Specifically, we need to be able to determine whether a symmetric matrix
+ is positive semidefinite or not.
+ First, we diagonalize the matrix is 
+\begin_inset Formula $O\left(n^{3}\right)$
+\end_inset
+
+ time, thereby writing 
+\begin_inset Formula $M=UDU^{T}$
+\end_inset
+
+ where 
+\begin_inset Formula $U$
+\end_inset
+
+ is orthonormal and 
+\begin_inset Formula $D$
+\end_inset
+
+ is diagonal.
+ 
+\begin_inset Formula $M$
+\end_inset
+
+ is positive semidefinite exactly when 
+\begin_inset Formula $D$
+\end_inset
+
+ has non-negative entries.
+ If 
+\begin_inset Formula $D$
+\end_inset
+
+ has a negative entry, then we can find a vector 
+\begin_inset Formula $c$
+\end_inset
+
+ such that 
+\begin_inset Formula $U^{T}c$
+\end_inset
+
+ is the basis vector associated with that entry, and 
+\begin_inset Formula $c^{T}UDU^{T}c=c^{T}Mc<0$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $c^{T}Mc=\sum c_{i}c_{j}m_{ij}$
+\end_inset
+
+, this is a linear functional on 
+\begin_inset Formula $M$
+\end_inset
+
+ which separates 
+\begin_inset Formula $M$
+\end_inset
+
+ from the positive cone.
 \end_layout
 
 \begin_layout Section*
@@ -3585,10 +3771,58 @@ Interior Point Methods
 Linear programming problems are usually solved by the simplex method, where
  the vertices of the feasible polytope are examined systematically.
  Our semidefinite programs do not have polytopes as feasible sets, so there
- are infinitely many vertices to check.
+ would be infinitely many vertices to check.
  Instead, we use interior point methods, where we search the interior of
  the feasible set.
- To do this, we assign a barrier function which is infinite at the boundary:
+ But first we rephrase the problem to contain both the primal and dual problems.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+min\left(\left(c^{T}y\right)+TR\left(F_{0}Z\right)\right)=F\left(y\right)\cdot Z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+subject to the fact that 
+\begin_inset Formula $F\left(y\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $Z$
+\end_inset
+
+ are primal and dual feasible respectively.
+ 
+\end_layout
+
+\begin_layout Standard
+We know by the strong duality theorem for linear programming that this minimum
+ is actually 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ By finding the location where this occurs, we can find the optimal values
+ 
+\begin_inset Formula $F\left(y\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $Z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To do this, we assign a barrier function which is infinite at the boundary
+ of both feasible sets.
 \end_layout
 
 \begin_layout Standard
@@ -3598,6 +3832,289 @@ Linear programming problems are usually solved by the simplex method, where
 \log\left(\det Z^{-1}\right) & \mbox{ if }Z>0\\
 \infty & else
 \end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This function is convex (why?), so it has a unique minimum, known as the
+ analytic center.
+ We can find this analytic center using Newton's Method
+\begin_inset CommandInset citation
+LatexCommand cite
+key "boy04"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Enumerate
+Start with an arbitrary point, 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ (in our case, this is some feasible positive definite matrix 
+\begin_inset Formula $Z$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Enumerate
+Calculate the tangent line for which the second order approximation for
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ is minimized (it happens to be
+\begin_inset Formula $-\nabla^{2}f\left(x\right)^{-1}\nabla f\left(x\right)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Find the point 
+\begin_inset Formula $x^{\prime}$
+\end_inset
+
+ along this tangent line for which 
+\begin_inset Formula $f\left(x^{\prime}\right)$
+\end_inset
+
+.
+ This is just a 
+\begin_inset Formula $1$
+\end_inset
+
+-dimensional search and can be performed efficiently.
+\end_layout
+
+\begin_layout Standard
+Newton's Method has good convergence results when 
+\begin_inset Formula $f$
+\end_inset
+
+ is self-concordant: 
+\begin_inset Formula $\left|f^{\prime\prime\prime}\left(x\right)\right|\leq2f^{\prime\prime}\left(x\right)^{\frac{3}{2}}$
+\end_inset
+
+, and our barrier function is such a function.
+\end_layout
+
+\begin_layout Standard
+The analytic center of the primal and dual feasible sets can be extended
+ to a 
+\begin_inset Quotes eld
+\end_inset
+
+central path
+\begin_inset Quotes erd
+\end_inset
+
+ to the optimal points
+\begin_inset CommandInset citation
+LatexCommand cite
+key "vand96"
+
+\end_inset
+
+.
+ Specifically, for each 
+\begin_inset Formula $\gamma>0$
+\end_inset
+
+, we consider the set 
+\begin_inset Formula $F\left(y\right)>0,$
+\end_inset
+
+ and 
+\begin_inset Formula $d^{T}y=\gamma$
+\end_inset
+
+.
+ This is a subset of the feasible set, and for 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ near the optimum, it is nonempty.
+ Therefore, we can calculate its analytic center.
+ Doing so, we obtain a curve parameterized by 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ of feasible matrices 
+\begin_inset Formula $F\left(y\right)$
+\end_inset
+
+ which leads to the optimal feasible matrix.
+\end_layout
+
+\begin_layout Proposition
+If 
+\begin_inset Formula $F\left(y\right)$
+\end_inset
+
+ is on the central path, there will be a corresponding dual feasible matrix
+ 
+\begin_inset Formula $Z$
+\end_inset
+
+ on the dual central path.
+\end_layout
+
+\begin_layout Proof
+\begin_inset CommandInset citation
+LatexCommand cite
+key "vand96"
+
+\end_inset
+
+ If 
+\begin_inset Formula $F\left(y\right)$
+\end_inset
+
+ is on the central path, with parameter 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, then 
+\begin_inset Formula $F\left(y\right)$
+\end_inset
+
+ is the solution to the optimization
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+y^{\star}=argmin\left(\log\left(\det F\left(y\right)\right)^{-1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+such that 
+\begin_inset Formula $F\left(y\right)\succeq0$
+\end_inset
+
+ and 
+\begin_inset Formula $c^{T}y=\gamma$
+\end_inset
+
+.
+ We can ignore the first condition, because our objective function is 
+\begin_inset Formula $\infty$
+\end_inset
+
+ when it is violated.
+ The method of Lagrange Multipliers says that a convex function can only
+ be minimized when the gradient of the objective function is parallel to
+ the constraint.
+ To perform partial derivative 
+\begin_inset Formula $\frac{\partial}{\partial y_{y}}$
+\end_inset
+
+ on the objective function, we need to use Jacobi's Formula.
+ (! wikipedia) In particular, for invertible 
+\begin_inset Formula $A$
+\end_inset
+
+ we have 
+\begin_inset Formula $\frac{d}{dt}\det A\left(t\right)=Tr\left(\det\left(A\right)A^{-1}\frac{dA\left(t\right)}{dt}\right)$
+\end_inset
+
+.
+ In our case, this yeilds
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\frac{1}{\det F\left(y^{\star}\right)^{-1}}Tr\left(\det F\left(y^{\star}\right)^{-1}F\left(y^{\star}\right)\frac{dF\left(y\right)^{-1}}{dy}\right)=Tr\left(F\left(y^{\star}\right)\frac{dF\left(y\right)^{-1}}{dy_{i}}\right)=Tr\left(F\left(y^{\star}\right)^{-1}F_{i}\right)=\lambda c_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Or, in other words, 
+\begin_inset Formula $\frac{F\left(y\right)^{-1}}{\lambda}$
+\end_inset
+
+ is dual-feasible.
+ It's clear that the duality gap between 
+\begin_inset Formula $Tr\left(\frac{F\left(y^{\star}\right)^{-1}}{\lambda}\cdot F\left(y^{\star}\right)\right)=\frac{n}{\lambda}$
+\end_inset
+
+.
+ Also, its claimed (! the proof appears to be missing from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "vand96"
+
+\end_inset
+
+) that 
+\begin_inset Formula $\frac{F\left(y^{\star}\right)^{-1}}{\lambda}$
+\end_inset
+
+ is on the central path.
+ Thus, the two central paths can be paremerized by the dual gap, and the
+ corresponding points are near-inverses.
+\end_layout
+
+\begin_layout Standard
+Next, we introduce a distance function to serve as a penalty for deviating
+ from the central path.
+\begin_inset Formula 
+\[
+\psi\left(y,Z\right)\coloneqq-\log\det\left(F\left(y\right)Z\right)+\log\det F\left(y^{\star}\right)Z^{\star}=-\log\det F\left(y\right)Z+n\log Tr\left(F\left(y\right)Z\right)-n\log n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This can actually be rewritten independently of 
+\begin_inset Formula $y^{\star}$
+\end_inset
+
+ by using the fact that 
+\begin_inset Formula $F\left(y^{\star}\right)Z^{\star}=\frac{\eta}{n}I$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, we introduce a potential which takes into account 
+\begin_inset Formula $\psi$
+\end_inset
+
+, the deviation from the central path and 
+\begin_inset Formula $\eta$
+\end_inset
+
+, the duality gap.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\phi\coloneqq\nu\sqrt{n}\log\left(F\left(y\right)\cdot Z\right)+\psi\left(y,Z\right)
 \]
 
 \end_inset
