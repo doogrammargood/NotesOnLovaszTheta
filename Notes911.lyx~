@@ -3,6 +3,9 @@
 \begin_document
 \begin_header
 \textclass amsart
+\begin_preamble
+\usepackage{ bbold }
+\end_preamble
 \use_default_options true
 \begin_modules
 theorems-ams
@@ -2692,14 +2695,17 @@ In the dual formulation of
 \begin_inset Formula $N$
 \end_inset
 
- is the total number of cliques in the graph.
- 
+ is the total number of cliques in the graph, and each 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ corresponds to a clique.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\alpha^{\star}=\min_{y}\left(\sum_{i=1}^{N}y_{i}\right)
+\alpha^{\star}=q^{\star}=\min_{y}\left(\sum_{i=1}^{N}y_{i}\right)
 \]
 
 \end_inset
@@ -3162,7 +3168,7 @@ Observe that if we scale the solution to the vector coloring problem so
 \begin_layout Proof
 \begin_inset Formula 
 \[
-\vartheta-1=\frac{1}{n}I\cdot Z
+\vartheta-1=\min\left(\frac{1}{n}I\cdot Z\right)
 \]
 
 \end_inset
@@ -4130,6 +4136,596 @@ We can apply a modified Newton's Method to minimize
 .
  First, we need a direction to search.
  This is the time-limiting step.
+\end_layout
+
+\begin_layout Section*
+State Independent Contextuality
+\end_layout
+
+\begin_layout Standard
+It is possible to establish contextuality without probabilities, and in
+ a way that is independent of the quantum state.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename merminSquare.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mermin's square is a special arrangement of observables on pairs of qubits
+ which provides an example of a state-independent proof of contextuality.
+ In the diagram, the pauli operators 
+\begin_inset Formula $X,Y,Z$
+\end_inset
+
+ satisfy 
+\begin_inset Formula $X^{2}=Y^{2}=Z^{2}=I$
+\end_inset
+
+ and 
+\begin_inset Formula $XY=iZ$
+\end_inset
+
+.
+ The rows correspond to commuting observables which sum to the identity.
+ The first two columns also have this property, but the last column consists
+ of observables whose sum is proportional to 
+\begin_inset Formula $I$
+\end_inset
+
+.
+ Operationally, we interpret 
+\begin_inset Formula $I$
+\end_inset
+
+ as doing nothing, and we interpret these observables as measuring in their
+ eigenbasis.
+ When the observables commute, we can measure them in any order, so we can
+ effectively test any row or the first two columns.
+ It is easy to see that the product the results of any of these rows or
+ first two columns will be 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We should draw the exclusivity graph for this well-studied example.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename critical_graphs/merminSquareGraph
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here, we have 
+\begin_inset Formula $6$
+\end_inset
+
+ contexts, 
+\begin_inset Formula $R1,R2,R3,C1,C2,C3$
+\end_inset
+
+ and each context has 
+\begin_inset Formula $4$
+\end_inset
+
+ possible outcomes.
+ For example, for the node 
+\begin_inset Formula $R1-001$
+\end_inset
+
+, the '
+\begin_inset Formula $R1$
+\end_inset
+
+' indicates that we chose to measure the first row, 
+\begin_inset Formula $\left\{ IZ,ZI,ZZ\right\} $
+\end_inset
+
+, simultaneously.
+ The '
+\begin_inset Formula $001$
+\end_inset
+
+' means that 
+\begin_inset Formula $IZ$
+\end_inset
+
+ measured 
+\begin_inset Formula $-1$
+\end_inset
+
+, 
+\begin_inset Formula $ZI$
+\end_inset
+
+ measured 
+\begin_inset Formula $-1$
+\end_inset
+
+ and 
+\begin_inset Formula $ZZ$
+\end_inset
+
+ measured 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This graph was created by adding edges where experiments disagree.
+ For example, there is an edge between 
+\begin_inset Formula $R3-010$
+\end_inset
+
+ and 
+\begin_inset Formula $C2-100$
+\end_inset
+
+ because the measurement 
+\begin_inset Formula $ZX$
+\end_inset
+
+ is 
+\begin_inset Formula $+1$
+\end_inset
+
+ in the first node and 
+\begin_inset Formula $-1$
+\end_inset
+
+ in the second.
+ After a measurement, the state vectors will be orthogonal to one another,
+ because the first will be in the positve eigenspace of 
+\begin_inset Formula $ZX$
+\end_inset
+
+ and the second will be in the negative.
+ Hence, two 'incompatible' vectors will be orthogonal.
+ The graph should really be drawn according to orthogonalities, so we need
+ to be careful and consider the reverse: Do all orthogonalities come from
+ observables? Generally, it's true that there is some observable to distinguish
+ between any two orthogonal states: We can define an observable by its positive
+ and negative eigenvectors- which are the ones we want to distinguish.
+ In the Mermin Square example, it happens that there are no more orthogonality
+ relations than the ones found by disagreements in measurement, but this
+ is not necessarily the case.
+ If we dropped 
+\begin_inset Formula $YY$
+\end_inset
+
+ from the measurements, so that 
+\begin_inset Formula $C3=\left\{ ZZ,XX\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $R3=\left\{ XZ,ZX\right\} $
+\end_inset
+
+, then the outcome 
+\begin_inset Formula $C3-11$
+\end_inset
+
+ would be orthogonal to 
+\begin_inset Formula $R3-11$
+\end_inset
+
+, we would have no measurement in our list on which these two disagree.
+ Therefore, I stress that one must actually compute eigenvectors and their
+ orthogonalities to draw these graphs properly.
+ The script in grenerateGraphFromObservables.py does this.
+\end_layout
+
+\begin_layout Standard
+The computer (see the file MerminSquareGraph.py) indicates that 
+\begin_inset Formula $\vartheta\left(G\right)=6.0$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha\left(G\right)=5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The interpretation of this is slightly different than in the CHSH example.
+ In that example, we did not have a concrete set of observables, and were
+ instead trying to find a bound over a class of them which satisfied certain
+ relations.
+ Here, the Mermin square defines a specific set of observables.
+ In the CHSH example, we had to take a subset which corresponds to a weighting
+ of the nodes.
+ Here, our graph is the vectors of the experiment themselves.
+\end_layout
+
+\begin_layout Standard
+The fact that 
+\begin_inset Formula $\alpha\left(G\right)<q\left(G\right)=6$
+\end_inset
+
+, indicates that there is no independent set which can meet every clique.
+ We've said that classical states (global assignments of outcomes) correspond
+ to independent sets.
+ Each context corresponds to a clique.
+ Thus, there is no assignment to the observables which fits into every context.
+ In other words, we have strong contextuality.
+\end_layout
+
+\begin_layout Standard
+In fact, it appears that you can always detect (strong) contextuality in
+ this way: A section corresponds to a vertex.
+ A global section corresponds to an independent set that meets each clique.
+ If the vertex of a section section can be extended to an independent set
+ which meets ever clique, that section can be extended to a global section,
+ and conversely as well.
+\end_layout
+
+\begin_layout Standard
+Given a measurement scenario, our graphs are precisely the complement of
+ the graph whose vertices are the sections over each context, and whose
+ edges are compatibility relations.
+ If we draw these graphs, and calculate independence numbers, it seems that
+ we can completely solve the problem of detecting contextuality.
+ This is implemented in generateGraphFromObservables.py
+\end_layout
+
+\begin_layout Standard
+Since we no longer have an optimization problem, 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ is less useful here.
+ The value 
+\begin_inset Formula $\vartheta\left(G\right)=6$
+\end_inset
+
+ indicates this configuration of vectors in 
+\begin_inset Formula $4$
+\end_inset
+
+ dimensions is optimal.
+ Recall that 
+\begin_inset Formula $\vartheta\left(G\right)$
+\end_inset
+
+ can be regarded as the maximum sum of probabilities at each vertex over
+ all possible orthonormal representations.
+ Our observables' eigenvectors form an orthonormal representation whose
+ sum of probabilities is 
+\begin_inset Formula $6$
+\end_inset
+
+, since we are guaranteed a successful measurement in each of the 
+\begin_inset Formula $6$
+\end_inset
+
+ contexts.
+ 
+\end_layout
+
+\begin_layout Standard
+It would be interesting to see what solution the semidefinite program returns.
+ This program should return the positive semidefinite matrix 
+\begin_inset Formula $B$
+\end_inset
+
+ whose normalized Cholesky decomposition gives the orthonormal representation,
+ and the handle is the weighted sum of cholesky vectors.
+ The maximum of a linear functional over a convex set occurs at the boundary.
+ Thus, I would expect that 
+\begin_inset Formula $det\left(B\right)=0$
+\end_inset
+
+, which implies that the cholesky vectors should never be full dimension.
+\end_layout
+
+\begin_layout Section*
+A Weaker State-Independent Contextuality
+\end_layout
+
+\begin_layout Standard
+The Peres-Mermin square does not have any satisfying assignments.
+ Thus, its classical set trivially obeys any Bell Inequality.
+ A weaker form of state-independent contextuality (henceforth state-independent
+ contextuality) occurs when a single Bell Inequality separates all quantum
+ states from all classical ones.
+ This stands in contrast to logical contextuality.
+ Since the quantum set and classical sets are convex bodies, there is a
+ separating hyperplane between the two.
+ This hyperplane corresponds to a Bell Inequality.
+ Thus, we do not gain a more general notion of state-independent contextuality
+ by allowing the inequality to vary with the state.
+\end_layout
+
+\begin_layout Standard
+This weaker form of contextuality can be recognized.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cab15"
+
+\end_inset
+
+State Independent Contextuality is equivalent to: We can assign non-negative
+ numbers 
+\begin_inset Formula $w=\left(w_{1},w_{2},\dots\right)$
+\end_inset
+
+ to the vertices of our orthogonality graph, such that
+\begin_inset Formula 
+\[
+\sum_{j\in\alpha}w_{j}<1\mbox{ for all \ensuremath{\alpha} and }\sum_{v}w_{v}\Pi_{v}\geq I
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+where 
+\begin_inset Formula $\Pi_{i}$
+\end_inset
+
+ is the projector associated with the vertex 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ runs over the set of independent sets.
+ If this is the case, the functional in our inequality is given by the weighting
+s 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Suppose we have such an assignment of the weights.
+ Then any classical assignment of outcomes corresponds to an independent
+ set, where the sum of weights is strictly bounded by 
+\begin_inset Formula $1$
+\end_inset
+
+ by fiat.
+ For any state vector 
+\begin_inset Formula $\psi$
+\end_inset
+
+, the weighted sum of probabilities is lower bounded 
+\begin_inset Formula 
+\[
+\sum_{v}w_{v}\left\langle \psi\right|\Pi_{v}\left|\psi\right\rangle =\left\langle \psi\right|\left(\sum_{v}w_{v}\Pi_{v}\right)\left|\psi\right\rangle \geq\left\langle \psi\right|I\left|\psi\right\rangle =1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Thus, we have state-independent contextuality.
+\end_layout
+
+\begin_layout Proof
+Conversely, suppose we have some functional which separates all classical
+ states from all quantum states.
+ Such a functional corresponds to a corresponds to a weighting of the vertices
+ 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ of non-negative numbers such that for some 
+\begin_inset Formula $A\in\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\sum_{j\in\alpha}w_{j}<A\mbox{ and }\sum_{v}w_{v}\left\langle \psi\right|\Pi_{v}\left|\psi\right\rangle \geq A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+If we rescale our weights, we can set 
+\begin_inset Formula $A=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\sum_{j\in\alpha}w_{j}<1\mbox{ and }\sum_{v}w_{v}\left\langle \psi\right|\Pi_{v}\left|\psi\right\rangle \geq1=\left\langle \psi\right|I\left|\psi\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Now we re-arrange the second condition.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+0\leq\sum_{v}w_{v}\left\langle \psi\right|\Pi_{v}\left|\psi\right\rangle -\left\langle \psi\right|I\left|\psi\right\rangle =\left\langle \psi\right|\left(\sum_{v}w_{v}\Pi_{v}-I\right)\left|\psi\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+and holds occurs for all 
+\begin_inset Formula $\psi$
+\end_inset
+
+, in particular for any eigenvectors of 
+\begin_inset Formula $\left(\sum_{v}w_{v}\Pi_{v}-I\right)$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula $\left(\sum_{v}w_{v}\Pi_{v}-I\right)$
+\end_inset
+
+ is positive semidefinite and we have 
+\begin_inset Formula $\sum_{v}w_{v}\Pi_{v}\geq I$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It is claimed
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cab15"
+
+\end_inset
+
+ that this necessary and sufficient condition can be verified by a semidefinite
+ program.
+ However, it's a little unsatisfying because it is relies on eigenvectors
+ and is not fully combinatorial.
+ There is a simple necessary combinatorial condition
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ram14"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cab15"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proposition
+In order to be state-independent contextual, the underlying orthogonality
+ graph must satisfy
+\end_layout
+
+\begin_layout Proposition
+\begin_inset Formula 
+\[
+\omega^{\star}\left(G\right)>d
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+where 
+\begin_inset Formula $\omega^{\star}\left(G\right)=\alpha^{\star}\left(\overline{G}\right)$
+\end_inset
+
+ is the fractional chromatic number and 
+\begin_inset Formula $d$
+\end_inset
+
+ is the dimension.
+\end_layout
+
+\begin_layout Proof
+If we have state-independent contextuality, then such contextuality must
+ hold for the maximally mixed state, which assigns a probability of 
+\begin_inset Formula $\frac{1}{d}$
+\end_inset
+
+ to every vector.
+ Thus, we need this probability distribution to be outside of the classical
+ set before we can hope to have state-independent contextuality.
+ The condition above is a clever way to check if this distribution is classical
+ or not.
+\end_layout
+
+\begin_layout Proof
+The antiblocker theorem (Theorem 25) between 
+\begin_inset Formula $VP\left(G\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $FVP\left(G\right)$
+\end_inset
+
+ states that a point 
+\begin_inset Formula $x\in VP\left(G\right)$
+\end_inset
+
+ iff 
+\begin_inset Formula $\forall y\in FVP\left(\overline{G}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $x^{T}y\leq1$
+\end_inset
+
+, thus, we would like to calculate 
+\begin_inset Formula $\max_{y}x^{T}y$
+\end_inset
+
+, where 
+\begin_inset Formula $y$
+\end_inset
+
+ ranges over 
+\begin_inset Formula $FVP\left(\overline{G}\right)=VP\left(G\right)$
+\end_inset
+
+.
+ This exactly defines 
+\begin_inset Formula $\alpha^{\star}\left(\overline{G};x\right)=\omega^{\star}\left(G;x\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $x$
+\end_inset
+
+ is now the weighting.
 \end_layout
 
 \begin_layout Standard

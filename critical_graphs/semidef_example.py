@@ -21,7 +21,7 @@ A = np.array([[0., 1., 0., 0., 1., 1., 0., 0., 0., 0. ],
               [1., 0., 0., 1., 0., 0., 0., 0., 0., 1. ],
               [1., 0., 0., 0., 0., 0., 0., 1., 1., 0. ],
               [0., 1., 0., 0., 0., 0., 0., 0., 1., 1. ],
-              [0., 0., 1., 0., 1., 1., 0., 0., 0., 1. ],
+              [0., 0., 1., 0., 0., 1., 0., 0., 0., 1. ],
               [0., 0., 0., 1., 0., 1., 1., 0., 0., 0. ],
               [0., 0., 0., 0., 1., 0., 1., 1., 0., 0. ]])
 
@@ -43,14 +43,15 @@ M = ONES - A - I
 tedious_arrays = []
 for i in range(10):
     for j in range(i):
-        if M[i][j] > 0.1:
+        if M[i][j] > 0.:
             tedious_arrays.append([[ 1. if ( (r==j and k==i) or (r==i and k==j) )else 0. for r in range(10) ] for k in range(10)])
 tedious_arrays= map(lambda t: np.array(t), tedious_arrays)
-#sum = A + I
+sum = A + I
 #print tedious_arrays[0].type()
-#for T in tedious_arrays:
-#    sum = sum + T
-#print sum
+for T in tedious_arrays:
+    sum = sum + T
+print sum
+print M
 constraintMatrix = []
 constraintMatrix.append(np.ravel(-I).tolist())
 for T in tedious_arrays:
