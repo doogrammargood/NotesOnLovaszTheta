@@ -4,7 +4,7 @@
 \begin_header
 \textclass amsart
 \begin_preamble
-\usepackage{ bbold }
+
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -4139,7 +4139,7 @@ We can apply a modified Newton's Method to minimize
 \end_layout
 
 \begin_layout Section*
-State Independent Contextuality
+Kochen-Specker Sets
 \end_layout
 
 \begin_layout Standard
@@ -4160,6 +4160,7 @@ It is possible to establish contextuality without probabilities, and in
 \begin_layout Standard
 Mermin's square is a special arrangement of observables on pairs of qubits
  which provides an example of a state-independent proof of contextuality.
+ In fact, there are no satisfying assignments to the observables at all.
  In the diagram, the pauli operators 
 \begin_inset Formula $X,Y,Z$
 \end_inset
@@ -4173,28 +4174,29 @@ Mermin's square is a special arrangement of observables on pairs of qubits
 \end_inset
 
 .
- The rows correspond to commuting observables which sum to the identity.
- The first two columns also have this property, but the last column consists
- of observables whose sum is proportional to 
+ Each row and column consists of 
+\begin_inset Formula $3$
+\end_inset
+
+ commuting observables, and the products of each row and column are 
 \begin_inset Formula $I$
+\end_inset
+
+, except for the last column, where the product is 
+\begin_inset Formula $-I$
 \end_inset
 
 .
- Operationally, we interpret 
-\begin_inset Formula $I$
-\end_inset
-
- as doing nothing, and we interpret these observables as measuring in their
- eigenbasis.
- When the observables commute, we can measure them in any order, so we can
- effectively test any row or the first two columns.
- It is easy to see that the product the results of any of these rows or
- first two columns will be 
+ This means that any row and any column can be measured and that the product
+ of the outcomes is 
 \begin_inset Formula $1$
 \end_inset
 
-.
- 
+ for each row/column, except 
+\begin_inset Formula $-1$
+\end_inset
+
+ for the last column.
 \end_layout
 
 \begin_layout Standard
@@ -4335,14 +4337,14 @@ This graph was created by adding edges where experiments disagree.
 
 \begin_layout Standard
 The computer (see the file MerminSquareGraph.py) indicates that 
-\begin_inset Formula $\vartheta\left(G\right)=6.0$
+\begin_inset Formula 
+\[
+\vartheta\left(G\right)=6.0,\alpha\left(G\right)=5
+\]
+
 \end_inset
 
-, 
-\begin_inset Formula $\alpha\left(G\right)=5$
-\end_inset
 
-.
 \end_layout
 
 \begin_layout Standard
@@ -4438,7 +4440,359 @@ It would be interesting to see what solution the semidefinite program returns.
 \end_layout
 
 \begin_layout Section*
-A Weaker State-Independent Contextuality
+The Relationship Between Orthogonality Graphs and Possibilistic Empirical
+ Models
+\end_layout
+
+\begin_layout Standard
+Contextuality has also been studied via cohomology
+\begin_inset CommandInset citation
+LatexCommand cite
+key "abr98"
+
+\end_inset
+
+.
+ In this setup, we begin with a measurement scenario: 
+\begin_inset Formula $\left\langle X,M,O\right\rangle $
+\end_inset
+
+, where 
+\begin_inset Formula $X$
+\end_inset
+
+ is a collection of abstract measurements (not necessarily maximal), 
+\begin_inset Formula $M\subset2^{X}$
+\end_inset
+
+, a collection of contexts, which define those measurements which are assumed
+ to be co-measureable, and 
+\begin_inset Formula $O$
+\end_inset
+
+, a collection of outcomes.
+ We assume that 
+\begin_inset Formula $M$
+\end_inset
+
+ has a simplicial structure (a sub-collection of co-measureable measurements
+ must again be co-measureable).
+ This setup is quite general and does not assume that the measurements 
+\begin_inset Formula $X$
+\end_inset
+
+ have any particular structure, such as that they are quantum measurements
+ defined by hermitian matricies.
+\end_layout
+
+\begin_layout Standard
+We then define a sheaf of events: 
+\begin_inset Formula $\mathscr{E}:\left(2^{X}\right)^{op}\to SET$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathscr{E}\left(U\right)\coloneqq O^{U}$
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "car17"
+
+\end_inset
+
+.
+ For every collection of measurements, the sheaf of events describes the
+ possible outcomes for these measurements.
+ There is no restriction to these outcomes, and we only define the presheaf
+ of events so that we can define the possibilistic empirical models.
+ These define the possible outcomes for our model in the same way that the
+ orthogonality graph describes which outcomes may occur.
+\end_layout
+
+\begin_layout Standard
+A possibilistic empirical model is a sub presheaf of the sheaf of events
+ satisfying
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathscr{S}\left(C\right)\neq\emptyset\forall C\in M$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The restriction map 
+\begin_inset Formula $\rho_{U}^{U^{\prime}}\coloneqq\mathscr{S}\left(U^{\prime}\right)\to\mathscr{S}\left(U^{\prime}\right)::s\mapsto s\mid_{U}$
+\end_inset
+
+ is surjective when 
+\begin_inset Formula $U\subset U^{\prime}\subset C$
+\end_inset
+
+ for some 
+\begin_inset Formula $C\in M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Every family 
+\begin_inset Formula $\left\{ s_{C}\in\mathscr{S}\left(C\right)\right\} _{C\in M}$
+\end_inset
+
+ such that 
+\begin_inset Formula $s_{C}\mid_{C\cap C^{\prime}}=s_{C^{\prime}}\mid_{C\cap C^{\prime}}$
+\end_inset
+
+ for all 
+\begin_inset Formula $C,C^{\prime}\in M$
+\end_inset
+
+ induces a global section in 
+\begin_inset Formula $\mathscr{S}\left(X\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The fact that 
+\begin_inset Formula $\mathscr{S}$
+\end_inset
+
+ is a subpresheaf of 
+\begin_inset Formula $\mathscr{E}$
+\end_inset
+
+ indicates that the possible assignments for experiments defined by 
+\begin_inset Formula $\mathscr{S}$
+\end_inset
+
+ are indeed assignments to the set of outcomes.
+ Condition 1) ensures that every context has at least one satisfying assignment.
+ 2) ensures that an assignment within a context can be restricted to a sub-assig
+nment.
+ We only assume that this is possible within a context, because a context
+ consists of a collection of measurements which can be performed simultaneously
+ without affecting their outcomes.
+ Therefore, an assignment to a collection 
+\begin_inset Formula $U\subset C$
+\end_inset
+
+ can always be extended to an assignment of outcomes on 
+\begin_inset Formula $C$
+\end_inset
+
+ by performing the rest of the measurements.
+ 3) insists that every assignment to contexts which agrees on their overlap
+ can be extended to a global section.
+ In other words, any assignments to all measurements 
+\begin_inset Formula $X$
+\end_inset
+
+ which agree on each context is assumed to actually provide a global section.
+ This section must be unique, since 
+\begin_inset Formula $\mathscr{S}\subset\mathscr{E}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The question of logical contextuality is 
+\begin_inset Quotes eld
+\end_inset
+
+When is a section over a context extendible to a global section?
+\begin_inset Quotes erd
+\end_inset
+
+ By assumption 3), this is equivalent to asking whether or not there are
+ compatible sections for every other context.
+ We may also ask for strong logical contextuality: 
+\begin_inset Quotes eld
+\end_inset
+
+Are there any global assignments?
+\begin_inset Quotes erd
+\end_inset
+
+ There are various results relating to these questions which rely on cohomologic
+al invariants, but there appears to be a much simpler solution.
+\end_layout
+
+\begin_layout Definition
+Given a measurement scenario 
+\begin_inset Formula $\left\langle X,M,O\right\rangle $
+\end_inset
+
+ and a possibilistic empirical model for that measurement scenario, define
+ the graph 
+\begin_inset Formula $\mathscr{G}$
+\end_inset
+
+ to have vertices 
+\begin_inset Formula $\left\{ s_{C}\in\mathscr{S}\left(C\right)\right\} _{C\in M}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $a\sim b$
+\end_inset
+
+ when 
+\begin_inset Formula $\forall C$
+\end_inset
+
+, 
+\begin_inset Formula $a\mid_{C}=b\mid_{C}$
+\end_inset
+
+ (in other words, the sections are compatible.)
+\end_layout
+
+\begin_layout Definition
+Each vertex of 
+\begin_inset Formula $\mathscr{G}$
+\end_inset
+
+ is defined to provide a an assignment of outcomes to a particular context.
+ Each of the vertices in our orthogonality graph, 
+\begin_inset Formula $G$
+\end_inset
+
+, also provides an assignment of outcomes to a particular context.
+ The vertices of 
+\begin_inset Formula $\mathscr{G}$
+\end_inset
+
+ are adjacent according to compatibility conditions, whereas the vertices
+ in our graph are adjacent according to incompatibility conditions.
+ Due to the technicality described in the previous section, it is possible
+ that there will be more orthogonality conditions than incompatibility condition
+s, but by adding additional measurements we can always ensure that the two
+ agree.
+ Thus, if our measurement scenario is provided with explicit measurements
+ 
+\begin_inset Formula $X$
+\end_inset
+
+ in terms of Hermitian matrices, we can calculate 
+\begin_inset Formula $G$
+\end_inset
+
+ and conclude that 
+\begin_inset Formula $\overline{G}=\mathscr{G}$
+\end_inset
+
+.
+ If our measurement scenario is not given according to explicit measurements,
+ we have still defined 
+\begin_inset Formula $\mathscr{G}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proposition
+Our empirical model will be strongly contextual iff 
+\begin_inset Formula $\omega\left(\mathscr{G}\right)=\left|M\right|$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Since no two sections over a particular context 
+\begin_inset Formula $C$
+\end_inset
+
+ are compatible, 
+\begin_inset Formula $\omega\left(\mathscr{G}\right)\leq\left|M\right|$
+\end_inset
+
+.
+ Suppose that we have a global section, 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\forall C$
+\end_inset
+
+, 
+\begin_inset Formula $S\mid_{C}$
+\end_inset
+
+ is a section over 
+\begin_inset Formula $C$
+\end_inset
+
+, and thus corresponds to a vertex of 
+\begin_inset Formula $\mathscr{G}$
+\end_inset
+
+.
+ Moreover, for any two contexts 
+\begin_inset Formula $C,C^{\prime}$
+\end_inset
+
+, we must have 
+\begin_inset Formula $\left(S\mid_{C}\right)\mid_{C^{\prime}}=\left(S\mid_{C^{\prime}}\right)\mid_{C}=S\mid_{C\cap C^{\prime}}$
+\end_inset
+
+, which means that the corresponding vertices are adjacent.
+ Hence, 
+\begin_inset Formula $S$
+\end_inset
+
+ induces a clique of size 
+\begin_inset Formula $M$
+\end_inset
+
+, and 
+\begin_inset Formula $\omega\left(\mathscr{G}\right)=\left|M\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Conversely, if 
+\begin_inset Formula $\omega\left(S\right)=\left|M\right|$
+\end_inset
+
+, then we have a clique of size 
+\begin_inset Formula $\left|M\right|$
+\end_inset
+
+.
+ The vertices of this clique correspond to sections for each context, and
+ since every pair of vertices in the clique is adjacent, every pair of sections
+ is compatible.
+ Due to assumption 3) of empirical models, there is a global section.
+\end_layout
+
+\begin_layout Standard
+Similarly, we can detect logical contextuality with respect to a section
+ by determining whether or not the vertex in 
+\begin_inset Formula $\mathscr{G}$
+\end_inset
+
+ associated with that section is part of a clique of size 
+\begin_inset Formula $\left|M\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+State-Independent Contextuality
 \end_layout
 
 \begin_layout Standard
@@ -4466,7 +4820,7 @@ key "cab15"
 
 \end_inset
 
-State Independent Contextuality is equivalent to: We can assign non-negative
+ State Independent Contextuality is equivalent to: We can assign non-negative
  numbers 
 \begin_inset Formula $w=\left(w_{1},w_{2},\dots\right)$
 \end_inset
@@ -4496,7 +4850,7 @@ where
 \begin_inset Formula $\alpha$
 \end_inset
 
- runs over the set of independent sets.
+ runs over the set of independent sets which meet every context.
  If this is the case, the functional in our inequality is given by the weighting
 s 
 \begin_inset Formula $w_{i}$
@@ -4643,7 +4997,7 @@ key "cab15"
 \end_layout
 
 \begin_layout Proposition
-In order to be state-independent contextual, the underlying orthogonality
+(!!)In order to be state-independent contextual, the underlying orthogonality
  graph must satisfy
 \end_layout
 
@@ -4748,6 +5102,814 @@ The antiblocker theorem (Theorem 25) between
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+The proof above contains a big hole: it shows that the maximally mixed state
+ provides a probability distribution which is outside of 
+\begin_inset Formula $VP\left(G\right)$
+\end_inset
+
+ iff 
+\begin_inset Formula $\omega^{\star}\left(G\right)>d$
+\end_inset
+
+.
+ However, 
+\begin_inset Formula $VP\left(G\right)$
+\end_inset
+
+ is defined as the convex hull of independent sets, not the convex hull
+ of independent sets which meet every context.
+ Thus, it is possible that the maximally mixed state might be part of 
+\begin_inset Formula $VP\left(G\right)$
+\end_inset
+
+, yet outside the set of classical assignments.
+ It's plausible that when the maximally mixed state is part of 
+\begin_inset Formula $VP\left(G\right)$
+\end_inset
+
+, the quantum set and the classical set will necessarily interesct at some
+ point, but this needs proof.
+ Before any kind of proof, it is clear that our framework needs refinement.
+ Since we have been requiring that our probabilities (both classical and
+ quantum) sum to exactly 
+\begin_inset Formula $1$
+\end_inset
+
+ in each context (rather than being bounded by 
+\begin_inset Formula $1$
+\end_inset
+
+), we need tools to explicitly represent the contexts which are considered.
+ Such tools are provided in the hypergraph approach
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fri15"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+The Hypergraph Approach
+\end_layout
+
+\begin_layout Standard
+Our orthogonality graphs only keep track of outcomes and compatibilities
+ of those outcomes.
+ There is no mention of which outcomes actually form a context and need
+ to have probabilities summing to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ In most of our cases, the 'outcomes' can be considered to be 
+\begin_inset Formula $1$
+\end_inset
+
+-dimensional projectors corresponding to the simultaneous eigenvectors of
+ the collections of commuting observables.
+\end_layout
+
+\begin_layout Standard
+An alternative approach
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fri15"
+
+\end_inset
+
+ makes explicit use of the fact that probabilities sum to exactly 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ In this hypergraph approach, our measurements correspond to hyperedges
+ whose vertices are outcomes.
+ 
+\end_layout
+
+\begin_layout Definition
+A hypergraph consists of a finite set of vertices, 
+\begin_inset Formula $V$
+\end_inset
+
+ (which correspond to outcomes), together with a collection of hyperedges
+ 
+\begin_inset Formula $E$
+\end_inset
+
+, 
+\begin_inset Formula $H\subset2^{V}$
+\end_inset
+
+, which correspond to our contexts.
+ We assume that these hyperedges form an antichain: for any two 
+\begin_inset Formula $h_{1},h_{2}\in H$
+\end_inset
+
+, we have 
+\begin_inset Formula $h_{1}\not\subset h_{2}$
+\end_inset
+
+.
+ (These are also called clutters)
+\end_layout
+
+\begin_layout Standard
+If our measurements consist of 
+\begin_inset Formula $1$
+\end_inset
+
+-d projectors, then these hyperedges will each contain 
+\begin_inset Formula $d$
+\end_inset
+
+ vertices, where 
+\begin_inset Formula $d$
+\end_inset
+
+ is the dimension of the space.
+ However, we do not assume any particular structure for the measurements
+ so that the framework is general.
+\end_layout
+
+\begin_layout Standard
+First, observe that a graph can be recovered from any hypergraph by defining
+ 
+\end_layout
+
+\begin_layout Definition
+Given a hypergraph 
+\begin_inset Formula $H$
+\end_inset
+
+, 
+\begin_inset Formula $Or\left(H\right)$
+\end_inset
+
+ is the graph with vertices 
+\begin_inset Formula $V\left(H\right)$
+\end_inset
+
+ and edges 
+\begin_inset Formula $w\sim v$
+\end_inset
+
+ iff 
+\begin_inset Formula $w,v\subset e\in E\left(H\right)$
+\end_inset
+
+ for some hyperedge 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The graph defined in this way is an orthogonality graph is our usual sense:
+ if two vertices are contained within the same hyperedge, then this means
+ that these two vertices correspond to different outcomes for the same context.
+ If we perform a quantum measurement corresponding to this hyperedge, then
+ the outcomes of that measurement will correspond to the eigenspaces of
+ our measurment, and different outcomes will be in orthogonal subspaces.
+ If we are given specific observables to serve as the hyperedges then we
+ might find more orthogonalities.
+ The type of orthogonality that comes automatically from disagreeing tests
+ is called 
+\begin_inset Quotes eld
+\end_inset
+
+local orthogonality,
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Just as we have defined 
+\begin_inset Formula $FVP\left(G\right)$
+\end_inset
+
+, 
+\begin_inset Formula $TH\left(G\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $VP\left(G\right)$
+\end_inset
+
+ for orthogonality graphs which capture the general, quantum, and classical
+ probability distributions on outcomes, we can also define three classes
+ of probability distributions for hypergraphs, along with charaterizations
+ of these bodies which follow from the Antiblocker property.
+ 
+\end_layout
+
+\begin_layout Standard
+Our original use of the convex bodies 
+\begin_inset Formula $FVP,TH,VP$
+\end_inset
+
+ was to derive Bell Inequalities.
+ The graphs given as input were actually subgraphs of the graph of the system
+ we were interested in.
+ Thus, we allowed that the probabilities be subnormalized, because the vertices
+ which weren't part of our subgraph could hide some of the probability.
+ In the hypergraph approach, we require that each measurement be normalized.
+\end_layout
+
+\begin_layout Definition
+A probabilistic model on a hypergraph 
+\begin_inset Formula $H$
+\end_inset
+
+ consists of an assignment 
+\begin_inset Formula $p:V\left(H\right)\to\left[0,1\right]$
+\end_inset
+
+ such that 
+\begin_inset Formula $\sum_{v\in e}p\left(v\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+One tradeoff is that there are now hypergraphs which do not admit any probabilis
+tic models.
+\end_layout
+
+\begin_layout Proposition
+For a hypergraph 
+\begin_inset Formula $H$
+\end_inset
+
+, probabilistic model 
+\begin_inset Formula $p$
+\end_inset
+
+ is extremal exactly when there is a subhypergraph 
+\begin_inset Formula $W\subset H$
+\end_inset
+
+ such that 
+\begin_inset Formula $W$
+\end_inset
+
+ admits a unique probabilistic model 
+\begin_inset Formula $p_{W}$
+\end_inset
+
+, which extends to 
+\begin_inset Formula $p$
+\end_inset
+
+ by setting 
+\begin_inset Formula $p\left(v\right)=0$
+\end_inset
+
+ when 
+\begin_inset Formula $v\not\in W$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+By induction.
+ The base case is when 
+\begin_inset Formula $H$
+\end_inset
+
+ itself has a unique probabilistic model, and in this case there is nothing
+ to prove.
+\end_layout
+
+\begin_layout Proof
+Otherwise, probabilistic models, by definition, satisfy
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+p\left(v\right)\geq0,\mbox{ and }\sum_{v\in e}p\left(v\right)=1\mbox{ }\forall e\in E\left(H\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+This is a polytope, so extreme points will be extreme points of facets.
+ A facet will consist of those probability distributions where one of the
+ constraining inequalities is met.
+ Hence, there is some vertex 
+\begin_inset Formula $v$
+\end_inset
+
+ such that 
+\begin_inset Formula $p\left(v\right)=0$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $W^{1}=H-\left\{ v\right\} $
+\end_inset
+
+ and recurse.
+\end_layout
+
+\begin_layout Standard
+We do not assume that these models obey the exclusivity principle.
+ Their summations are only normalized over hyperedges, and 
+\begin_inset Formula $Or\left(H\right)$
+\end_inset
+
+ may include cliques which do not correspond to edges.
+ The omission of the exclusivity principle in
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fri15"
+
+\end_inset
+
+ was deliberate so as to allow two hypergraphs 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $H_{2}$
+\end_inset
+
+ to be tensored and so that this tensor product would admit the tensor of
+ the probabilistic models on each of 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $H_{2}$
+\end_inset
+
+.
+ The scheme for tensoring these two hypergraphs is complicated and is omitted
+ here.
+ The point of doing this is to explore non-locality, which we might revisit
+ later.
+\end_layout
+
+\begin_layout Proposition
+Given a hypergraph 
+\begin_inset Formula $H$
+\end_inset
+
+, a probabilistic model 
+\begin_inset Formula $p:V\left(H\right)\to\left[0,1\right]$
+\end_inset
+
+ satisfies the exclusivity principle iff 
+\begin_inset Formula $\omega\left(Or\left(H\right);p\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+First, suppose that we have a probabilistic model, 
+\begin_inset Formula $p$
+\end_inset
+
+ which satisfies the exclusivity principle.
+ The exclusivity principle states 
+\begin_inset Formula $\omega\left(Or\left(H\right);p\right)\leq1$
+\end_inset
+
+.
+ Any hyperedge, 
+\begin_inset Formula $e$
+\end_inset
+
+, will yield a clique in 
+\begin_inset Formula $Or\left(H\right)$
+\end_inset
+
+ for which 
+\begin_inset Formula $\sum_{v\in e}p\left(v\right)=1$
+\end_inset
+
+, so 
+\begin_inset Formula $\omega\left(Or\left(H\right);p\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Conversely, suppose that 
+\begin_inset Formula $\omega\left(Or\left(H\right);p\right)=1$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\omega\left(Or\left(H\right);p\right)\leq1$
+\end_inset
+
+, and the exclusivity principle is satisfied.
+\end_layout
+
+\begin_layout Standard
+For us, satisfying the exclusivity principle defines what is meant by a
+ general probabilistic model.
+ The probabilities 
+\begin_inset Formula $p$
+\end_inset
+
+ for which 
+\begin_inset Formula $\omega\left(Or\left(H\right);p\right)$
+\end_inset
+
+ can be interpreted with the antiblocker property.
+ These are the points such that scaling up by any amount would remove 
+\begin_inset Formula $p$
+\end_inset
+
+ from 
+\begin_inset Formula $FVP\left(Or\left(H\right)\right)$
+\end_inset
+
+.
+ These are the points on the boundary of 
+\begin_inset Formula $FVP\left(Or\left(H\right)\right)$
+\end_inset
+
+ and are also probabilistic models.
+ It is not clear whether or not these 'general probabilistic models' in
+ this sense are convex.
+\end_layout
+
+\begin_layout Definition
+A probabilistic model is deterministic if 
+\begin_inset Formula $p\left(v\right)\in\left\{ 0,1\right\} $
+\end_inset
+
+ for all 
+\begin_inset Formula $v\in V\left(H\right)$
+\end_inset
+
+.
+ A probabilistic model is classical if it is a convex combination of determinist
+ic models.
+\end_layout
+
+\begin_layout Standard
+In constrast to the deterministic models for graphs, our definition of probabili
+stic models requires that the probabilities within every context sum to
+ 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ This captures that the deterministic models are not only independent sets
+ of 
+\begin_inset Formula $Or\left(H\right)$
+\end_inset
+
+ but also that these independent sets must meet every clique.
+\end_layout
+
+\begin_layout Proposition
+A probabilistic model 
+\begin_inset Formula $p$
+\end_inset
+
+ is classical iff 
+\begin_inset Formula $\omega^{\star}\left(Or\left(H\right);p\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $p$
+\end_inset
+
+ is a probabilistic model, we have 
+\begin_inset Formula $\omega^{\star}\left(Or\left(H\right);p\right)\geq\omega\left(Or\left(H\right);p\right)\geq1$
+\end_inset
+
+, since any hyperedge determines a clique whose sum of probabilities is
+ 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Recall that the feasible set of 
+\begin_inset Formula $\omega^{\star}\left(G\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $FVP\left(\overline{G}\right)$
+\end_inset
+
+.
+ The antiblocker property says that for any graph 
+\begin_inset Formula $G$
+\end_inset
+
+, 
+\begin_inset Formula $FVP\left(G\right)=AB\left(VP\left(\overline{G}\right)\right)$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $p\in VP\left(G\right)$
+\end_inset
+
+, so for any 
+\begin_inset Formula $q\in FVP\left(G\right)$
+\end_inset
+
+, 
+\begin_inset Formula $p\cdot q\leq1$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\omega^{\star}\left(Or\left(H\right),p\right)$
+\end_inset
+
+ is defined to be 
+\begin_inset Formula $\max_{q\in FVP\left(\overline{Or\left(H\right)}\right)}q\cdot p$
+\end_inset
+
+, we have 
+\begin_inset Formula $\omega^{\star}\left(Or\left(H\right),p\right)\leq1$
+\end_inset
+
+, so 
+\begin_inset Formula $\omega^{\star}\left(Or\left(H\right),p\right)=1.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Conversely, suppose that 
+\begin_inset Formula $\omega^{\star}\left(Or\left(H\right);p\right)=1$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\forall q\in FVP\left(\overline{Or\left(H\right)}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $q\cdot p\leq1$
+\end_inset
+
+, so 
+\begin_inset Formula $p\in AB\left(FVP\left(\overline{Or\left(H\right)}\right)\right)=VP\left(Or\left(H\right)\right)$
+\end_inset
+
+.
+ In other words, 
+\begin_inset Formula $p$
+\end_inset
+
+ can be written as a convex combination of independent sets.
+ Each of these independent sets must be maximal.
+ If 
+\begin_inset Formula $p=x+p^{\prime}$
+\end_inset
+
+, where 
+\begin_inset Formula $x$
+\end_inset
+
+ is an independent set which does not meet an edge 
+\begin_inset Formula $e_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $p^{\prime}$
+\end_inset
+
+ consists of the remaining terms of a decomposition of 
+\begin_inset Formula $p$
+\end_inset
+
+ into independent sets, then 
+\begin_inset Formula $\sum_{v\in e_{x}}p\left(v\right)=\sum_{v\in e_{x}}p^{\prime}\left(v\right)<1$
+\end_inset
+
+, which contradicts that 
+\begin_inset Formula $p$
+\end_inset
+
+ was a probabilistic model.
+\end_layout
+
+\begin_layout Standard
+The condition described by the previous proposition indicates that the set
+ of classical probability models consists of a particular facet of 
+\begin_inset Formula $VP\left(G\right)$
+\end_inset
+
+, bounded by the vertices which are independent sets which meet every context.
+\end_layout
+
+\begin_layout Standard
+The case of 
+\begin_inset Formula $TH\left(G\right)$
+\end_inset
+
+ is interesting.
+ It would be natural to define the quantum models by analogy with the previous
+ two propositions:
+\end_layout
+
+\begin_layout Definition
+A probabilistic model 
+\begin_inset Formula $p\in Q_{1}\left(H\right)$
+\end_inset
+
+ if 
+\begin_inset Formula $\vartheta\left(\left(\overline{Or\left(H\right)},p\right)\right)=1$
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fri15"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+However, we will se that 
+\begin_inset Formula $Q_{1}\left(H\right)$
+\end_inset
+
+ is larger than the quantum set:
+\end_layout
+
+\begin_layout Definition
+The quantum set, 
+\begin_inset Formula $Q$
+\end_inset
+
+, is the collection of probabilities 
+\begin_inset Formula $p:V\left(H\right)\to\left[0,1\right]$
+\end_inset
+
+ such that there exists a Hilbert space 
+\begin_inset Formula $\mathscr{H}$
+\end_inset
+
+, a quantum state 
+\begin_inset Formula $\rho\in\mathscr{B}_{+,1}\left(\mathscr{H}\right)$
+\end_inset
+
+ and a projection operator 
+\begin_inset Formula $P_{v}\in\mathscr{B}\left(\mathscr{H}\right)$
+\end_inset
+
+ associated to every 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ which are projective measurments:
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula 
+\[
+\sum_{v\in e}P_{v}=I_{\mathscr{H}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+and reproduce the given probabilities 
+\begin_inset Formula $p\left(v\right)$
+\end_inset
+
+ according to 
+\begin_inset Formula $p\left(v\right)=Tr\left(\rho P_{v}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+There are several distinctions between 
+\begin_inset Formula $Q_{1}$
+\end_inset
+
+ and the quantum set.
+ In 
+\begin_inset Formula $Q_{1}$
+\end_inset
+
+, we require that our projectors be 
+\begin_inset Formula $1$
+\end_inset
+
+-d, and we also require that the Hilbert Space be finite dimensional.
+ These are both conditions which might suggest that 
+\begin_inset Formula $Q_{1}\subset Q$
+\end_inset
+
+, but in fact 
+\begin_inset Formula $Q\subset Q_{1}$
+\end_inset
+
+.
+ In the quantum set, we require that the projectors sum to 
+\begin_inset Formula $I_{\mathscr{H}}$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $p\in Q_{1}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sum_{v\in e}p\left(v\right)=1$
+\end_inset
+
+ (since 
+\begin_inset Formula $p$
+\end_inset
+
+ is a probabilistic model) for some particular state 
+\begin_inset Formula $\psi$
+\end_inset
+
+ (the handle), but the projectors will not sum to the identity unless the
+ dimension of the Orthonormal Representation is the size of each context.
+ It might be possible to extend the 1-d projectors to higher-dimensional
+ projectors which agree with the original projectors for 
+\begin_inset Formula $\psi$
+\end_inset
+
+, but these projections will need to be compatible with one another.
+ Thus, the quantum set has a more stringent requirement.
+\end_layout
+
+\begin_layout Standard
+Unlike the set of classical and general probability sets, the quantum set
+ cannot be defined by the underlying orthogonality graph.
+\end_layout
+
+\begin_layout Proposition
+There exists a hypergraph 
+\begin_inset Formula $H$
+\end_inset
+
+ for which 
+\begin_inset Formula $Q\left(H\right)\neq Q_{1}\left(H\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+The Bell scenario 
+\begin_inset Formula $B_{2,2,2}$
+\end_inset
+
+ is such a scenario.
+ (TODO: why?)
+\end_layout
+
+\begin_layout Proposition
+There are two hypergraphs, 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $H_{2}$
+\end_inset
+
+ with the same underlying orthogonality graph, but different quantum sets.
 \end_layout
 
 \begin_layout Standard
