@@ -3498,7 +3498,7 @@ key "lov78"
  
 \begin_inset Formula 
 \[
-\left(\sum_{i=1}^{n}\left(\psi^{T}v_{i}\right)^{2}\right)=\left(\sum_{i=1}^{n}w_{i}^{2}\right)\left(\sum_{i=1}^{n}\left(\psi^{T}v_{i}\right)^{2}\right)\geq\left(\sum_{i=1}^{n}\left|w_{i}\right|\psi^{T}v_{i}\right)^{2}=\left(\sum_{i=1}^{n}\psi^{T}w_{i}\right)^{2}\geq\left(\sum_{i=1}^{n}w_{i}\right)^{2}=\sum_{i,j}w_{i}^{T}w_{j}
+\left(\sum_{i=1}^{n}\left(\psi^{T}v_{i}\right)^{2}\right)=\left(\sum_{i=1}^{n}w_{i}^{2}\right)\left(\sum_{i=1}^{n}\left(\psi^{T}v_{i}\right)^{2}\right)\geq\left(\sum_{i=1}^{n}\left|w_{i}\right|\psi^{T}v_{i}\right)^{2}=\left(\sum_{i=1}^{n}\psi^{T}w_{i}\right)^{2}\leq\left(\sum_{i=1}^{n}w_{i}\right)^{2}=\sum_{i,j}w_{i}^{T}w_{j}
 \]
 
 \end_inset
@@ -3513,7 +3513,7 @@ The first inequality can be made to hold if we select our scaling such that
 \end_inset
 
 .
- The second inequality can be made to hold if we select 
+ The second inequality can be made into equality if we select 
 \begin_inset Formula $\psi$
 \end_inset
 
@@ -4699,7 +4699,7 @@ s, but by adding additional measurements we can always ensure that the two
 
 \begin_layout Proposition
 Our empirical model will be strongly contextual iff 
-\begin_inset Formula $\omega\left(\mathscr{G}\right)=\left|M\right|$
+\begin_inset Formula $\omega\left(\mathscr{G}\right)\neq\left|M\right|$
 \end_inset
 
 .
@@ -4764,7 +4764,7 @@ Since no two sections over a particular context
 
 \begin_layout Proof
 Conversely, if 
-\begin_inset Formula $\omega\left(S\right)=\left|M\right|$
+\begin_inset Formula $\omega\left(\mathscr{G}\right)=\left|M\right|$
 \end_inset
 
 , then we have a clique of size 
@@ -5550,6 +5550,8 @@ For us, satisfying the exclusivity principle defines what is meant by a
 \end_inset
 
  and are also probabilistic models.
+ It is not clear whether or not these 'general probabilistic models' in
+ this sense are convex.
 \end_layout
 
 \begin_layout Definition
@@ -5890,15 +5892,83 @@ There exists a hypergraph
 \end_layout
 
 \begin_layout Proof
-The Bell scenario 
+(Not really a proof) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nav14"
+
+\end_inset
+
+ We can characterize the quantum set of 
 \begin_inset Formula $B_{2,2,2}$
 \end_inset
 
- is such a scenario.
- (TODO: why?)
+ by the angle between the two choices of measurement for one of the parties.
+ There is a particular functional which separates 
+\begin_inset Formula $Q_{1}$
+\end_inset
+
+ from 
+\begin_inset Formula $Q$
+\end_inset
+
+ by direct computation.
 \end_layout
 
-\begin_layout Proposition
+\begin_layout Standard
+It would be nice to have a good explanation for why the 
+\begin_inset Quotes eld
+\end_inset
+
+almost quantum set
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $Q_{1}$
+\end_inset
+
+ differs from 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ However, according to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nav14"
+
+\end_inset
+
+ 
+\begin_inset Formula $Q_{1}$
+\end_inset
+
+ satisfies most information principles which have been conjectured to characteri
+ze 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ This makes it difficult to find a high-level reason for the discrepancy
+ between 
+\begin_inset Formula $Q_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ It would be nice to have some sort of general recipe for generating probabiliti
+es which lie in 
+\begin_inset Formula $Q_{1}-Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
 There are two hypergraphs, 
 \begin_inset Formula $H_{1}$
 \end_inset
@@ -5908,6 +5978,565 @@ There are two hypergraphs,
 \end_inset
 
  with the same underlying orthogonality graph, but different quantum sets.
+ That is, the quantum set is not determined by the underlying orthogonality
+ graph.
+\end_layout
+
+\begin_layout Corollary
+TODO: collect the proof from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fri15"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+The NPA Hierarchy
+\end_layout
+
+\begin_layout Standard
+The Quantum Set is mysterious- its definition does not suggest an algorithm
+ for determining whether or not a probabilistic model is quantum.
+ However, it is simple to certify that a probabilistic model is quantum
+ by providing the projectors which give rise to the desired probabilities.
+ While it is conjectured that membership in the quantum is not decidable
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fri15"
+
+\end_inset
+
+, there is a collection of semidefinite programs which completely determines
+ it
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nav08"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Suppose that we have a probabilistic model which is actually quantum.
+ According to Definition 43, there are projectors which can be associated
+ to each vertex, such that projectors 
+\begin_inset Formula $P_{v}$
+\end_inset
+
+ in any hyperedge are mutually orthogonal and sum to 
+\begin_inset Formula $I$
+\end_inset
+
+, and a state 
+\begin_inset Formula $\left|\psi\right\rangle $
+\end_inset
+
+ which produces the desired probabilities.
+ Consider the vectors of the form 
+\begin_inset Formula $\left\{ \left(\prod_{i=1}^{n}P_{v_{i}}\right)\left|\psi\right\rangle \cup\left|\psi\right\rangle \right\} $
+\end_inset
+
+ where 
+\begin_inset Formula $n$
+\end_inset
+
+ is finite.
+ We can form a semidefinite matrix, 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+ by taking the Gram matrix for these vectors.
+ By its construction 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+ is positive semidefinite.
+ Also, if the Hilbert Space has dimension 
+\begin_inset Formula $N<n$
+\end_inset
+
+, then no more than 
+\begin_inset Formula $N$
+\end_inset
+
+ of our vectors are linearly independent.
+ Hence, the rank of 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+ will be at most 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Any edge of the hypergraph must give its vectors a decomposition of 
+\begin_inset Formula $I$
+\end_inset
+
+ into projectors.
+ This enforces constraints on our projectors 
+\begin_inset Formula $P_{v}$
+\end_inset
+
+, which, in turn, are constraints on the entries of 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $v_{1}\sim v_{2}$
+\end_inset
+
+, then they must correspond to orthogonal projectors.
+ Hence, for any product of projectors 
+\begin_inset Formula $S$
+\end_inset
+
+, we will have 
+\begin_inset Formula $P_{v_{1}}S\left|\psi\right\rangle \perp P_{v_{2}}S\left|\psi\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Any the projectors associated with any edge in the hypergraph must sum to
+ 
+\begin_inset Formula $I$
+\end_inset
+
+.
+ This translates to the fact that for any product of projector 
+\begin_inset Formula $S$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sum_{v\in E}P_{v}P_{S}\left|\psi\right\rangle =P_{S}\left|\psi\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Putting our observations in terms of 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Gamma^{n}\succeq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Gamma_{\emptyset,\emptyset}^{n}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\forall s,w\right)\sum_{v\in E}\Gamma_{sv,w}^{n}=\Gamma_{s,w}^{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $v=v_{1}\dots v_{k}$
+\end_inset
+
+ and 
+\begin_inset Formula $w=w_{1}\dots w_{m}$
+\end_inset
+
+, with 
+\begin_inset Formula $v_{k}\sim w_{m}$
+\end_inset
+
+, then 
+\begin_inset Formula $\Gamma_{v,w}^{n}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Gamma_{\emptyset,v}^{n}=Pr\left(v\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, if our probabilistic model, 
+\begin_inset Formula $p$
+\end_inset
+
+, is actually quantum, then for any 
+\begin_inset Formula $n$
+\end_inset
+
+, we can find a certificate, 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+, which satisfies properties 1-5.
+ The NPA hierarchy at level 
+\begin_inset Formula $n$
+\end_inset
+
+, 
+\begin_inset Formula $Q_{n}$
+\end_inset
+
+, is the set of probabilistic models such that there exists a certificate
+ 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+ which satisfies 1-5.
+ We will see that the notation agrees with definition 
+\begin_inset Formula $42$
+\end_inset
+
+, and that 
+\begin_inset Formula $Q=Q_{\infty}$
+\end_inset
+
+.
+ First, we note that the certificates 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+ really do form a hierarchy.
+\end_layout
+
+\begin_layout Proposition
+Given a hypergraph 
+\begin_inset Formula $H$
+\end_inset
+
+, 
+\begin_inset Formula $Q\left(H\right)\subset\dots\subset Q_{n}\left(H\right)\subset\dots\subset Q_{1}\left(H\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+We have already argued that 
+\begin_inset Formula $\forall n$
+\end_inset
+
+, 
+\begin_inset Formula $Q\left(H\right)\subset Q_{n}\left(H\right)$
+\end_inset
+
+, since if our model is really quantum, then we can construct 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+ as the Gram matrix of vectors of the form 
+\begin_inset Formula $\left\{ \left(\prod_{i=1}^{n}P_{v_{i}}\right)\left|\psi\right\rangle \cup\left|\psi\right\rangle \right\} $
+\end_inset
+
+.
+ Suppose that we have a probabilistic model 
+\begin_inset Formula $p\in Q_{n}\left(H\right)$
+\end_inset
+
+.
+ Then we have a certificate 
+\begin_inset Formula $\overline{\Gamma^{n}}$
+\end_inset
+
+ which certifies 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ By restricting this matrix to entries involving only 
+\begin_inset Formula $n-1$
+\end_inset
+
+ projectors, we obtain a 
+\begin_inset Formula $Q_{n-1}$
+\end_inset
+
+ certificate for 
+\begin_inset Formula $\Gamma^{n-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+The NPA hierarchy exactly characterizes the quantum set.
+ 
+\begin_inset Formula $\bigcap_{n=1}^{\infty}Q_{n}\left(H\right)=Q\left(H\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+[sketch] The previous proposition implies that 
+\begin_inset Formula $Q\left(H\right)\subset\bigcap_{n=1}^{\infty}Q_{n}\left(H\right)$
+\end_inset
+
+.
+ To show the other direction, suppose that 
+\begin_inset Formula $p$
+\end_inset
+
+ is a probabilistic model in 
+\begin_inset Formula $\bigcap_{n=1}^{\infty}Q_{n}\left(H\right)$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula $p$
+\end_inset
+
+ posesses certificates 
+\begin_inset Formula $\overline{\Gamma^{n}}$
+\end_inset
+
+ for each 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ The entries of each certificate are bounded, since they come from inner
+ products of projections of unit vectors.
+ Each certificate can be viewed as a vector in the 
+\begin_inset Formula $l_{\infty}$
+\end_inset
+
+ norm, if we complete the non-existant entries to 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ The Banach-Alaoglu theorem states that the unit ball is compact in the
+ weak-
+\begin_inset Formula $\star$
+\end_inset
+
+ topology, so our sequence of certificates has a convergent subsequence.
+ A convergent subsequence in the weak-
+\begin_inset Formula $\star$
+\end_inset
+
+ topology will converge when any functional 
+\begin_inset Formula $\rho:v\to\mathbb{R}$
+\end_inset
+
+ is applied.
+ In particular, if 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is returns a single component, we see that convergence in the weak-
+\begin_inset Formula $\star$
+\end_inset
+
+ topology implies pointwise convergence.
+ Hence, we have an infinite certificate 
+\begin_inset Formula $\Gamma^{\infty}$
+\end_inset
+
+ which satisfies 2-5, and any submatrix formed by restriction is positive
+ semidefinite.
+ (!) By taking limits, we can see that 
+\begin_inset Formula $\Gamma^{\infty}$
+\end_inset
+
+ itself is positive semidefinite.
+\end_layout
+
+\begin_layout Proof
+If the behavior of 
+\begin_inset Formula $p$
+\end_inset
+
+ is quantum, then the vertices of 
+\begin_inset Formula $H$
+\end_inset
+
+ form a 
+\begin_inset Formula $C^{\star}$
+\end_inset
+
+-algebra.
+ The infinite certificate, 
+\begin_inset Formula $\Gamma^{\infty}$
+\end_inset
+
+ defines a state on this 
+\begin_inset Formula $C^{\star}$
+\end_inset
+
+ algebra, and the GNS construction provides a way of converting the 
+\begin_inset Formula $C^{\star}$
+\end_inset
+
+-algebra into operators on a Hilbert Space, and the state into a vector
+ in this Hilbert Space.
+\end_layout
+
+\begin_layout Proof
+In order to use the GNS construction, we must argue that 
+\begin_inset Formula $\Gamma^{\infty}$
+\end_inset
+
+ really does define a state on the 
+\begin_inset Formula $C^{\star}$
+\end_inset
+
+-algebra.
+ Suppose that 
+\begin_inset Formula $X$
+\end_inset
+
+ is in this 
+\begin_inset Formula $C^{\star}$
+\end_inset
+
+-algebra, so that 
+\begin_inset Formula $X$
+\end_inset
+
+ can be written as a linear combination of products of vertices in the hypergrap
+h.
+ The state, 
+\begin_inset Formula $\psi_{\Gamma^{\infty}}$
+\end_inset
+
+, must be shown to be a positive linear functional of norm 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ We define 
+\begin_inset Formula $\psi_{\Gamma^{\infty}}\left(P_{v_{1}}P_{v_{2}}\dots P_{v_{n}}\right)$
+\end_inset
+
+ by looking up 
+\begin_inset Formula $\Gamma_{\emptyset,P_{v_{1}}\dots P_{v_{n}}}^{\infty}$
+\end_inset
+
+ and we extend this by linearity.
+ The norm is 
+\begin_inset Formula $1$
+\end_inset
+
+, 
+\begin_inset Formula $\psi_{\Gamma^{\infty}}\left(I\right)=\Gamma_{\emptyset,\emptyset}^{\infty}=1$
+\end_inset
+
+, by 2).
+ To see that 
+\begin_inset Formula $\psi_{\Gamma^{\infty}}$
+\end_inset
+
+ is positive, we must show that 
+\begin_inset Formula $\psi_{\Gamma^{\infty}}\left(X^{\star}X\right)\geq0$
+\end_inset
+
+.
+ This follows from the fact that 
+\begin_inset Formula $\Gamma^{\infty}$
+\end_inset
+
+ is positive semidefinite, since if we write 
+\begin_inset Formula $X$
+\end_inset
+
+ as a linear combination of the vertices (projectors, or generators of our
+ 
+\begin_inset Formula $C^{\star}$
+\end_inset
+
+-algebra), 
+\begin_inset Formula $X=\sum_{i=1}^{n}\left(x_{k}\prod_{i}v_{i\in I_{k}}\right)$
+\end_inset
+
+, then 
+\begin_inset Formula $\psi_{\Gamma^{\infty}}\left(X^{\star}X\right)=\left\langle x\right|\Gamma^{\infty}\left|x\right\rangle $
+\end_inset
+
+, where 
+\begin_inset Formula $\left|x\right\rangle =\sum_{k=1}^{n}x_{k}\left|\prod_{i\in I_{k}}v_{i}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The certificates 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+ are not a semidefinite program, since they do not involve an optimization.
+ They are convex bodies defined by a semidefinite condition, so they are
+ feasible sets of a semidefinite program.
+ Checking whether a particular probabilistic model lies in the 
+\begin_inset Formula $n^{th}$
+\end_inset
+
+ level of the hierarchy amounts to checking whether or not this feasible
+ set is empty, which can be achieved by the semidefinite program:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\max\left(\lambda\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+subject to
+\begin_inset Formula 
+\[
+\Gamma^{n}-\lambda I\succeq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+ is now assumed to satisfy 2-5.
+ If it can satisfy 1) as well, then 
+\begin_inset Formula $\lambda=0$
+\end_inset
+
+ is a solution.
+ Otherwise, 
 \end_layout
 
 \begin_layout Standard
