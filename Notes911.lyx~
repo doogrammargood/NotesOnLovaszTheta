@@ -5215,6 +5215,10 @@ A hypergraph consists of a finite set of vertices,
 \begin_inset Formula $h_{1}\not\subset h_{2}$
 \end_inset
 
+ and that 
+\begin_inset Formula $\bigcup_{e\in E}=V$
+\end_inset
+
 .
  (These are also called clutters)
 \end_layout
@@ -5634,11 +5638,11 @@ Recall that the feasible set of
 
 .
  If 
-\begin_inset Formula $p\in VP\left(G\right)$
+\begin_inset Formula $p\in VP\left(Or\left(H\right)\right)$
 \end_inset
 
 , so for any 
-\begin_inset Formula $q\in FVP\left(G\right)$
+\begin_inset Formula $q\in FVP\left(\overline{Or\left(H\right)}\right)$
 \end_inset
 
 , 
@@ -6536,7 +6540,339 @@ where
 \end_inset
 
  is a solution.
- Otherwise, 
+ Otherwise, the feasible set is empty.
+\end_layout
+
+\begin_layout Lemma
+The rank of a gram matrix is the dimension of the span of the vectors in
+ its decomposition.
+\end_layout
+
+\begin_layout Proof
+We use the fact that the rank of a gram matrix is the dimension of the space
+ spanned by the vectors of this gram matrix.
+ First, suppose that the vectors are all linearly independent.
+ Then the Cholesky decomposition 
+\begin_inset Formula $\Gamma=L^{T}L$
+\end_inset
+
+ shows that the 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ is non-singular when 
+\begin_inset Formula $L$
+\end_inset
+
+ is non-singular, and 
+\begin_inset Formula $L$
+\end_inset
+
+ will be non-singular if its vectors are all linearly independent.
+ 
+\end_layout
+
+\begin_layout Proof
+Now, suppose that our vectors consist of 
+\begin_inset Formula $\left\{ a_{1},\dots,a_{n},b_{1},\dots,b_{m}\right\} $
+\end_inset
+
+, where the 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+'s are all linearly independent and the 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+'s may be written as a linear combination of the 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+'s.
+ The first row of the matrix will be 
+\begin_inset Formula $\left(a_{1}\cdot a_{1},a_{1}\cdot a_{2},\dots a_{1}\cdot a_{n},a_{1}\cdot b_{1},\dots a_{1}\cdot b_{m}\right)$
+\end_inset
+
+, and the 
+\begin_inset Formula $n+1^{th}$
+\end_inset
+
+ row will be 
+\begin_inset Formula $\left(b_{1}\cdot a_{1},b_{1}\cdot a_{2},b_{1},\dots b_{1}\cdot a_{n},b_{1}\cdot b_{1}\dots b_{1}\cdot b_{m}\right)$
+\end_inset
+
+.
+ By assumption, we can write 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+ as a linear combination of the 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+'s, and thus we can write the 
+\begin_inset Formula $n+1^{th}$
+\end_inset
+
+ row as a linear combination of the previous rows.
+ Thus, the rows greater than 
+\begin_inset Formula $n$
+\end_inset
+
+ do not contribute to the rank of 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+Suppose we have a finite collection of projectors 
+\begin_inset Formula $\left\{ P_{i}\right\} _{i=1}^{n}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\sum_{i=1}^{n}P_{i}=I$
+\end_inset
+
+.
+ Then for 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+, 
+\begin_inset Formula $P_{i}P_{j}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $\sum_{i=1}^{n}P_{i}=I$
+\end_inset
+
+, conjugation by 
+\begin_inset Formula $P_{j}$
+\end_inset
+
+ gives 
+\begin_inset Formula $P_{j}\left(\sum_{i=1}^{n}P_{i}\right)P_{j}=I$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $0=P_{j}\left(\sum_{i\neq j}^{n}P_{i}\right)P_{j}=\sum_{i\neq j}^{n}P_{j}P_{i}P_{j}=\sum_{i\neq j}\left(P_{i}P_{j}\right)^{\star}\left(P_{i}P_{j}\right)$
+\end_inset
+
+.
+ The sum of positive operators can only be 
+\begin_inset Formula $0$
+\end_inset
+
+ if each of them is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $\left(P_{i}P_{j}\right)^{\star}\left(P_{i}P_{j}\right)=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $P_{i}P_{j}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+(Rank-Loop condition) Suppose we have a probabilistic model 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ There exists two certificates 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Gamma^{n+1}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\Gamma^{n+1}$
+\end_inset
+
+ restricts to 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ and Rank
+\begin_inset Formula $\left(\Gamma^{n+1}\right)=$
+\end_inset
+
+Rank
+\begin_inset Formula $\left(\Gamma^{n}\right)$
+\end_inset
+
+ iff 
+\begin_inset Formula $p$
+\end_inset
+
+ is the behavior of a finite-dimensional quantum system.
+ In this case, the dimension of the system exceeds this rank.
+\end_layout
+
+\begin_layout Proof
+Suppose first that our system is finite dimensional of dimension 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ Then the vectors from which we form our Gram matrix span a space of at
+ most 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ The lemma implies that the gram matrix formed by these vectors has rank
+ at most 
+\begin_inset Formula $d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Conversely, suppose that we have two certificates 
+\begin_inset Formula $\Gamma^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Gamma^{n+1}$
+\end_inset
+
+ which agree on the 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ submatrix, and which have the same rank.
+ Our Hilbert Space will be the finite dimensional space spanned by 
+\begin_inset Formula $H=Span\left(\prod_{j=1}^{n}P_{j}\left|\psi\right\rangle \right)$
+\end_inset
+
+, and we will define projectors 
+\begin_inset Formula $P_{i}\coloneqq Proj\left(Span\left(\left\{ P_{i}S\mid S=\prod_{j=1}^{n}P_{j}\left|\psi\right\rangle \right\} \right)\right)$
+\end_inset
+
+.
+ Clearly, the 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+'s are projectors, and the dimension of the space is Rank
+\begin_inset Formula $\left(\Gamma^{n}\right)$
+\end_inset
+
+.
+ To complete the proof, we must verify Definition 
+\begin_inset Formula $43$
+\end_inset
+
+.
+ We must establish that for any edge 
+\begin_inset Formula $e$
+\end_inset
+
+, 
+\begin_inset Formula $\sum_{v\in e}P_{v}=I$
+\end_inset
+
+.
+ Our axioms for certificates (namely 3.)) allows us to conclude something
+ very similar: 
+\begin_inset Formula $\sum_{v\in e}S^{\dagger}P_{v}^{\dagger}W=S^{\dagger}W$
+\end_inset
+
+ when 
+\begin_inset Formula $W,S$
+\end_inset
+
+ are of the form 
+\begin_inset Formula $\prod_{j=1}^{n}P_{j}\left|\psi\right\rangle $
+\end_inset
+
+.
+ And we have defined these vectors to span our Hilbert Space.
+ By linearlity, we see that for any vectors 
+\begin_inset Formula $\phi_{1},\phi_{2}\in H$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sum_{v\in e}\left\langle \phi_{1}\right|P_{v}^{\dagger}\left|\phi_{2}\right\rangle =\left\langle \phi_{1}\right|\left|\phi_{2}\right\rangle $
+\end_inset
+
+.
+ This shows that 
+\begin_inset Formula $\sum_{v\in e}P_{v}^{\dagger}=I$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Finally, I'd like to point out that we will recover the desired probabilities.
+ Let 
+\begin_inset Formula $P_{v}$
+\end_inset
+
+ be any projector as defined above.
+ Choose any edge 
+\begin_inset Formula $e$
+\end_inset
+
+ so 
+\begin_inset Formula $\sum_{r\in e}P_{r}=I$
+\end_inset
+
+ by the previous argument.
+ Then, denoting by 
+\begin_inset Formula $e^{n}$
+\end_inset
+
+ the collection of sequences of length 
+\begin_inset Formula $n$
+\end_inset
+
+ of projectors in 
+\begin_inset Formula $e$
+\end_inset
+
+, we obtain 
+\begin_inset Formula 
+\[
+\left\langle \psi\right|P_{v}\left|\psi\right\rangle =\left\langle \psi\right|P_{v}I^{n}\left|\psi\right\rangle =\left\langle \psi\right|P_{v}\left(\sum_{r\in e}P_{r}\right)^{n}\left|\psi\right\rangle =\sum_{r\in e^{n}}\left\langle \psi\right|P_{v}\left(\prod_{i=1}^{n}P_{r_{i}}\right)\left|\psi\right\rangle =\sum_{r\in e^{n}}\Gamma_{vr,\emptyset}^{n+1}=\Gamma_{v,\emptyset}^{n+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Here, we have used axiom 3.) 
+\begin_inset Formula $n$
+\end_inset
+
+ times in the last equality.
+ Finally, axiom 5.) completes the argument.
 \end_layout
 
 \begin_layout Standard
