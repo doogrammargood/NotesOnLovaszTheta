@@ -5638,11 +5638,11 @@ Recall that the feasible set of
 
 .
  If 
-\begin_inset Formula $p\in VP\left(G\right)$
+\begin_inset Formula $p\in VP\left(Or\left(H\right)\right)$
 \end_inset
 
 , so for any 
-\begin_inset Formula $q\in FVP\left(G\right)$
+\begin_inset Formula $q\in FVP\left(\overline{Or\left(H\right)}\right)$
 \end_inset
 
 , 
@@ -6649,24 +6649,47 @@ Suppose we have a finite collection of projectors
 \end_layout
 
 \begin_layout Proof
-If 
-\begin_inset Formula $i\neq j$
+Since 
+\begin_inset Formula $\sum_{i=1}^{n}P_{i}=I$
 \end_inset
 
-, then 
-\begin_inset Formula $\sum_{k\neq j}^{n}P_{k}=\left(I-P_{j}\right)$
-\end_inset
-
-.
- Conjugating by 
-\begin_inset Formula $P_{i}$
+, conjugation by 
+\begin_inset Formula $P_{j}$
 \end_inset
 
  gives 
-\begin_inset Formula $P_{i}\left(\sum_{k\neq j}^{n}P_{k}\right)P_{i}=\left(I-P_{j}\right)$
+\begin_inset Formula $P_{j}\left(\sum_{i=1}^{n}P_{i}\right)P_{j}=I$
 \end_inset
 
+.
+ Hence, 
+\begin_inset Formula $0=P_{j}\left(\sum_{i\neq j}^{n}P_{i}\right)P_{j}=\sum_{i\neq j}^{n}P_{j}P_{i}P_{j}=\sum_{i\neq j}\left(P_{i}P_{j}\right)^{\star}\left(P_{i}P_{j}\right)$
+\end_inset
 
+.
+ The sum of positive operators can only be 
+\begin_inset Formula $0$
+\end_inset
+
+ if each of them is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $\left(P_{i}P_{j}\right)^{\star}\left(P_{i}P_{j}\right)=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $P_{i}P_{j}=0$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Theorem
@@ -6850,6 +6873,395 @@ Here, we have used axiom 3.)
 
  times in the last equality.
  Finally, axiom 5.) completes the argument.
+\end_layout
+
+\begin_layout Remark
+A finer condition for stopping is given in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nav08"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Relationship to Measurment Scenarios
+\end_layout
+
+\begin_layout Standard
+Given a measurement scenario, 
+\begin_inset Formula $\left(X,M,O\right)$
+\end_inset
+
+, we can always draw a hypergraph, 
+\begin_inset Formula $H\left(X\right)$
+\end_inset
+
+.
+ The vertices of this hypergraph as assignments 
+\begin_inset Formula $V\left(H\left(X\right)\right)=\left\{ O^{C}\mid C\in M\right\} $
+\end_inset
+
+.
+ The hyperedges refer to those vertices which can be distinguished.
+ Clearly, each context provides a hyperedge.
+ By performing the measurements in a context, we distinguish between all
+ the outcomes in that context.
+ These edges provide a partition of the vertices into some of the hyperedges.
+\end_layout
+
+\begin_layout Standard
+However, these are not all the hyperedges.
+ We can obtain more by performing measurement protocols, where the choice
+ of the next measurement is determined by the outcome of the previous one.
+ The subsequent measurement must be compatible with the first.
+ The next definition captures this compatibility.
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $\left(X,M,O\right)$
+\end_inset
+
+ be a measurement scenario and 
+\begin_inset Formula $A\in X$
+\end_inset
+
+.
+ Then the induced scenario, 
+\begin_inset Formula $X\left\{ A\right\} $
+\end_inset
+
+, is the measurement scenario 
+\begin_inset Formula $\left\{ X^{\prime},M^{\prime},O^{\prime}\right\} $
+\end_inset
+
+, where 
+\begin_inset Formula $X^{\prime}=A^{\prime}\in X\mid A^{\prime}\neq A,\exists C\in M\mbox{ st }\left(A,A^{\prime}\right)\in C$
+\end_inset
+
+, 
+\begin_inset Formula $M^{\prime}=\left\{ C\cap X^{\prime}\mid C\in M\right\} $
+\end_inset
+
+, and 
+\begin_inset Formula $O^{\prime}=O$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+After choosing the measurement 
+\begin_inset Formula $A$
+\end_inset
+
+, our subsequent measurements are part of the induced measurement scenario,
+ 
+\begin_inset Formula $X\left\{ A\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Next, we define measurement protocols where subsequent measurements are
+ allowed to depend on the outcomes of previous measurements.
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $\left(X,M,O\right)$
+\end_inset
+
+ be a measurement scenario.
+ A measurement protocol, 
+\begin_inset Formula $T=MP\left(X\right)$
+\end_inset
+
+, is defined recursively by
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $T=\emptyset$
+\end_inset
+
+ if 
+\begin_inset Formula $X=\emptyset$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $T=\left(A,f\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $A\in X$
+\end_inset
+
+ is an observable and 
+\begin_inset Formula $f:O\to MP\left(X\left\{ A\right\} \right)$
+\end_inset
+
+ is a function.
+\end_layout
+
+\begin_layout Standard
+Measurement protocols can be performed, yeilding outcomes.
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $T$
+\end_inset
+
+ be a measurement protocol for a scenario 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Then define recursively 
+\begin_inset Formula $Out\left(T\right)=\left\{ \left(A,a,\alpha^{\prime}\right):a\in O,\alpha^{\prime}\in Out\left(f\left(a\right)\right)\right\} $
+\end_inset
+
+, with base case 
+\begin_inset Formula $Out\left(\emptyset\right)=\left\{ \star\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The outcome of a measurement scenario consists of actually enacting the
+ plan of measurments defined by that measurement scenario.
+ Thus, after all measurements have been made, we will have preformed all
+ of the measurements in a context and we will have outcomes for each measurement.
+ Thus, the outcome of a measurement scenario corresponds to a vertex in
+ our graph.
+ Each measurement scenario has a collection of outcomes, each of which correspon
+d to a vertex in our graph.
+ Hence, the measurement scenarios define a hyperedge.
+\end_layout
+
+\begin_layout Standard
+There is some difficulty in that different measurement protocols may have
+ outcomes which name the same collection of vertices.
+ For example, if we choose any clique, then each ordering of the vertices
+ corresponds to a different measurement protocol, where 
+\begin_inset Formula $f$
+\end_inset
+
+ is chosen to be the constant function, returning the next measurement in
+ that context.
+\end_layout
+
+\begin_layout Example
+Suppose our measurement scenario consists of 
+\begin_inset Formula $X=A,B,C$
+\end_inset
+
+; 
+\begin_inset Formula $M=\left\{ AB,BC,CA\right\} $
+\end_inset
+
+; and 
+\begin_inset Formula $O=\left\{ 0,1\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+We have 
+\begin_inset Formula $12$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+Suppose we start with a measurement scenario, 
+\begin_inset Formula $\left(X,M,O\right)$
+\end_inset
+
+ and construct the hypergraph as above.
+ Then our hypergraph will be a clutter: no two 
+\end_layout
+
+\begin_layout Section*
+Future Directions
+\end_layout
+
+\begin_layout Standard
+Information Theory:
+\end_layout
+
+\begin_layout Standard
+The original invention of 
+\begin_inset Formula $\vartheta\left(G\right)$
+\end_inset
+
+ was as a bound on 
+\begin_inset Formula $\Theta\left(G\right)\coloneqq\lim_{k\to\infty}\sqrt[k]{\alpha\left(G^{k}\right)}$
+\end_inset
+
+ (
+\begin_inset Formula $G^{k}$
+\end_inset
+
+ is the (!)or-product), the Shannon-information capacity of a graph.
+ This can be interpreted as the amount of information that can be encoded
+ into an alphabet where some letters can be confused for one another.
+ The graph has vertices representing the alphabet and edges which are the
+ (not necessarily transitive) confusability relation.
+\end_layout
+
+\begin_layout Standard
+There is a dual notion of Graph entropy.
+ Rather than the graph representing the communication channel, we view the
+ graph as representing the information source.
+ If we consider Shannon's original problem of encoding information into
+ a noisy channel, then we should also consider the problem of retrieving
+ the information from a noisy source.
+ We define
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sim01"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+H\left(G;p\right)=\min_{a\in VP\left(G\right)}\sum_{i=1}^{n}p_{i}\log\frac{1}{a_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+wi
+\end_layout
+
+\begin_layout Standard
+Computational Complexity:
+\end_layout
+
+\begin_layout Standard
+Main Strategy:
+\end_layout
+
+\begin_layout Standard
+The main thing that I'd like to do is identify graphs with large gaps between
+ 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, since these represent scenario
+\end_layout
+
+\begin_layout Standard
+Questions:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vartheta\left(G\right)$
+\end_inset
+
+ is a monotonic function on graphs of 
+\begin_inset Formula $n$
+\end_inset
+
+ vertices when graph are ordered by edge-containment.
+ There are some edges which can be removed (or added) without affecting
+ 
+\begin_inset Formula $\vartheta\left(G\right)$
+\end_inset
+
+.
+ For example, it is known
+\begin_inset CommandInset citation
+LatexCommand cite
+key "knu93"
+
+\end_inset
+
+ that 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ distributes over both strong ('and') and weak('or') products of graphs,
+ so 
+\begin_inset Formula $\vartheta\left(G\times H\right)=\vartheta\left(G\right)\vartheta\left(H\right)=\vartheta\left(G\boxtimes H\right)$
+\end_inset
+
+ and in particular
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sqrt{\vartheta\left(G\times G\right)}=\vartheta\left(G\right)=\sqrt{\vartheta\left(G\boxtimes H\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+the edges that are in the weak product but not the strong can be removed
+ or added without changing 
+\begin_inset Formula $\vartheta\left(G\right)$
+\end_inset
+
+.
+ Is there some way to identify all of the edges which can be added or removed?
+ How does 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ behave as a morphism of posets?
+\end_layout
+
+\begin_layout Standard
+This may be related to a distinction between orthonormal representations
+ and 
+\series bold
+faithful
+\series default
+ orthonormal representations
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lovbook"
+
+\end_inset
+
+, in which we require that two adjacent vertices are assigned non-orthogonal
+ vectors.
+ Is it true that when all optimal representations of a graph 
+\begin_inset Formula $G$
+\end_inset
+
+ are faithful, no edges can be added to 
+\begin_inset Formula $G$
+\end_inset
+
+ without changing its 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+-value? 
 \end_layout
 
 \begin_layout Standard
