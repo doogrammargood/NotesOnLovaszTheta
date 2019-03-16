@@ -1,0 +1,8 @@
+include README.md
+include LICENSE.txt
+include requirements.txt
+include qutip.bib
+include configspec.ini
+global-include *.pyx *.pxd *.pxi *.cpp *.hpp
+global-exclude rhs*.pyx
+recursive-include qutip/tests/ *.ini

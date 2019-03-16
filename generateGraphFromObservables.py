@@ -127,13 +127,31 @@ def createSageGraph(graph): #expects an adjacency list as a dict.
     print len(G.independent_set())
 
 
+def orthogonalize_representation(Z, automorphisms): #Not tested. performs the procedure of Theorem 6.1.5 of http://web.cs.elte.hu/~lovasz/kurzusok/orth-theta-16.pdf
+    #Assumes that Z is an optimal solution of the max. definition of L. Theta.
+    permutation_matrices = [o.matrix() for o in automorphisms.list()]
+    conjugated_witnesses = map(lambda x: np.matmul(np.matmul(x.T,Z),x), permutation_matrices)#Is there a better way to multiply 4 matrices?
+    summed_conjugates = reduce(lambda x,y: x+y,conjugated_witnesses, np.zeros((18,18)))
+    return summed_conjugates/float(len(permutation_matrices))
+
+def representation_from_witness(witness):
+    #Takes in a witness, a matrix satisfying the max. definition of O.R's and returns an orthonormal representation.
+    L = np.linalg.cholesky(witness)
+    handle = reduce(lambda x,y: x+y, L, np.zeros(len(witness[0])))
+    vectors = [v/np.linalg.norm(v) for v in L]
+    return (vectors,handle)
+
+
 yu_oh_vectors = [[0,1,-1], [1,0,-1], [1,-1,0], [0,1,1], [1,0,1], [1,1,0], #ys
                 [-1,1,1], [1,-1,1], [1,1,-1], [1,1,1], #hs
                  [1,0,0],[0,1,0],[0,0,1]] #zs #see https://arxiv.org/pdf/1109.4396.pdf
+yu_oh_vectors = map(lambda x: x/np.linalg.norm(x), yu_oh_vectors)
+labels = ['y1m', 'y2m', 'y3m', 'y1p', 'y2p', 'y3p', 'h1', 'h2', 'h3', 'h0', 'z1', 'z2', 'z3']
+yu_oh_vectors = list(map(list, zip(yu_oh_vectors, labels)))
 
 cab_vects =   [[1,0,0,0],
-              [0,1,0,0,],
-              [0,0,1,1,],
+              [0,1,0,0],
+              [0,0,1,1],
               [0,0,1,-1],
               [1,-1,0,0],
               [1,1,-1,-1],
@@ -170,13 +188,10 @@ def build_cab_graph(cab_vects, cab_cliques): #builds the ortho_graph for the cab
         adjacency_list[labels[v]]=current_list
     return adjacency_list
 
-#cab_vects = zip(map(lambda x: np.array(x)/np.linalg.norm(x), cab_vects ), map(lambda x: str(x), cab_vects))
 
 
 
-yu_oh_vectors = map(lambda x: x/np.linalg.norm(x), yu_oh_vectors)
-labels = ['y1m', 'y2m', 'y3m', 'y1p', 'y2p', 'y3p', 'h1', 'h2', 'h3', 'h0', 'z1', 'z2', 'z3']
-yu_oh_vectors = list(map(list, zip(yu_oh_vectors, labels)))
+
 #completed_yu_oh_vectors=complete_3d_vectors(yu_oh_vectors)
 #clean_yu_oh_labels(completed_yu_oh_vectors)
 
@@ -191,10 +206,91 @@ obs_list = [np.kron(I,Z), np.kron(Z,I), np.kron(Z,Z), np.kron(X,I), np.kron(I,X)
 #             np.kron(np.kron(Z,I), I),#7
 #             np.kron(np.kron(I,I), Z),#8
 #             np.kron(np.kron(I,X), I)] #Mermin Star
-ortho_graph=build_cab_graph(cab_vects,cab_cliques)
-#ortho_graph = build_ortho_graph(cab_vects)
-#print ortho_graph
-createSageGraph(ortho_graph)
+# ortho_graph=build_cab_graph(cab_vects,cab_cliques)
+# createSageGraph(ortho_graph)
+
+def pretty_print_vectors(vectors):
+    print "helllooo"
+    alphabet = list(map(chr, range(97, 123))) #helpful tip from https://stackoverflow.com/questions/16060899/alphabet-range-python/31888217
+    print alphabet
+    alphabet_legend = {} #a dictionary that keeps track of which decimal value corresponds to each letter.
+    next_char = chr(97)
+    count_char = 97
+    for a in alphabet:
+        alphabet_legend[a] = None#initially, the letters mean nothing.
+    for v in vectors:
+        for coordinate in v:
+            letter_found = False
+            for letter in alphabet:
+                if alphabet_legend[letter] and abs(alphabet_legend[letter] - coordinate)<epsilon:
+                    print alphabet_legend[letter]
+                    letter_found = True
+            if not letter_found:
+                alphabet_legend[next_char] = coordinate
+                count_char += 1
+                next_char = chr(count_char)
+                print next_char
+        print ""
+
+
+def orthogonalize_cab_vects(simple_cab_vects, cab_cliques):
+    cab_vects = map(lambda x: np.array(x)/np.linalg.norm(x), simple_cab_vects ) #turns the simple representation of the cab vects into
+    handle = np.array(np.random.rand(4))
+    handle = handle/np.linalg.norm(handle)
+    lov_theta = 4.5
+    ws = [np.dot(handle, v)/(lov_theta**0.5)*v for v in cab_vects]
+    gram_matrix = np.array([[ np.dot(w1,w2) for w2 in ws] for w1 in ws])
+
+    new_handle = reduce(lambda x,y: x+y, ws, np.zeros(4))
+    O=orthogonalize_representation(gram_matrix, Graph(build_cab_graph(simple_cab_vects, cab_cliques)).automorphism_group())
+    return representation_from_witness(O)
+
+def sandbox_for_opt_vects(simple_cab_vects, cab_cliques):
+    cab_vects = map(lambda x: np.array(x)/np.linalg.norm(x), simple_cab_vects )
+    handle = np.array(np.random.rand(4))
+    handle = handle/np.linalg.norm(handle)
+    lov_theta = 4.5
+    ws = [np.dot(handle, v)/(lov_theta**0.5)*v for v in cab_vects]
+    gram_matrix = np.array([[ np.dot(w1,w2) for w2 in ws] for w1 in ws])
+    sum = 0
+    for i in range(18):
+        for j in range(18):
+            sum += np.dot(ws[i],ws[j])
+
+    print sum
+    new_handle = reduce(lambda x,y: x+y, ws, np.zeros(4))
+    #print new_handle
+    print reduce(lambda x,y: x+y, [np.dot(x,x) for x in ws], 0)
+    # print np.dot(new_handle,new_handle)
+    # print np.trace(gram_matrix)
+    # print np.shape(gram_matrix)
+    print np.linalg.matrix_rank(gram_matrix)
+    #print np.ones((18,18))
+    #print gram_matrix
+    print np.trace(np.matmul(gram_matrix,np.ones((18,18))))
+    O=orthogonalize_representation(gram_matrix, Graph(build_cab_graph(simple_cab_vects, cab_cliques)).automorphism_group())
+    print np.trace(O)
+    print np.trace(np.matmul(O,np.ones((18,18))))
+    print np.linalg.matrix_rank(O)
+    print np.linalg.cholesky(O)
+    print representation_from_witness(O)
+    pretty_print_vectors(representation_from_witness(O)[0])
+
+def check_state_independence(vectors):
+    #See Lemma 9.3.21 on page 291 of Grotschel, Lovasz and Schrijver
+    cab_vects = map(lambda x: np.array(x)/np.linalg.norm(x), vectors )
+    print [np.outer(v,v) for v in cab_vects]
+    print reduce(lambda x,y: x+y, [np.outer(v,v) for v in cab_vects], np.zeros((4,4)))
+
+check_state_independence(cab_vects)
+#sandbox_for_opt_vects(cab_vects, cab_cliques)
+
+#print cab_vects
+#print find_optimal_handle(cab_vects)
+#Z=construct_opt_matrix(cab_vects,np.array([1.,0.,0.,0.]))
+#print Z
+#print np.trace(Z)
+#print np.trace(np.ones((len(cab_vects),len(cab_vects)))*Z)
 
 def example_with_obs_list(obs_list): #This code is kept for reference. It shows how to use an observable list to build a graph.
     DIMENSION = preprocessObservables(obs_list)

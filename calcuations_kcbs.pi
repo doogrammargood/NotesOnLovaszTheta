@@ -1,0 +1,4 @@
+import math
+phi = 4*math.pi/5.0
+for i in range(4):
+  sum+=math.cos(i*phi)

@@ -127,6 +127,7 @@ def test_orbit_zero():
             print "--"
             if not verify_clique(np.matrix(clique)*get_unitary(0,1)**i):
                 print i," not there"
+
 def check_for_automorphisms():
     #looks at all unitaries to see if any are automorphisms.
     for i in range(9):
