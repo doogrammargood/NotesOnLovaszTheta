@@ -1,0 +1,334 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsart
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Large Separations between 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Victor Bankston
+\end_layout
+
+\begin_layout Abstract
+The independence number of a graph can be approximated by the polynomial-time
+ computable graph parameter 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+.
+ It has been shown that if 
+\begin_inset Formula $P\neq NP$
+\end_inset
+
+, there can be no polynomial time polynomial-time computable 
+\begin_inset Formula $n^{\epsilon}$
+\end_inset
+
+-approximation of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ for any 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+, so there must be graphs for which 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ vary greatly.
+ It would be nice to have concrete families of graphs which satisfy these
+ properties.
+ Here, we will show that the complements of Ramanujan graphs have the desired
+ property.
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $\lambda_{0}\geq\dots\geq\lambda_{n}$
+\end_inset
+
+ be the eigenvalues of the adjacency matrix of some regular graph 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ That graph is called Ramanujan when 
+\begin_inset Formula $\max\left(\left|\lambda_{2}\right|,\left|\lambda_{n}\right|\right)\leq2\sqrt{d-1}=2\sqrt{\lambda_{0}-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+The graph parameters 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ and 
+\begin_inset Formula $\omega$
+\end_inset
+
+ can be bounded by the eigenvalues of the graph.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Formula $\vartheta\left(\overline{G}\right)\geq1-\frac{d}{\lambda_{n}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+This bound comes from two bounds in Lovasz's original paper
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lov78"
+
+\end_inset
+
+.
+ Corollary 
+\begin_inset Formula $2$
+\end_inset
+
+ states 
+\begin_inset Formula $\vartheta\left(G\right)\vartheta\left(\overline{G}\right)\geq n$
+\end_inset
+
+.
+ Theorem 
+\begin_inset Formula $9$
+\end_inset
+
+ states for a regular graph 
+\begin_inset Formula $\vartheta\left(G\right)\leq\frac{-n\lambda_{n}}{\lambda_{0}-\lambda_{n}}$
+\end_inset
+
+.
+ Thus
+\begin_inset Formula 
+\[
+\vartheta\left(G\right)\geq\frac{n}{\vartheta\left(\overline{G}\right)}\geq\frac{n}{\frac{-n\lambda_{n}}{\lambda_{0}-\lambda_{n}}}=-\frac{\lambda_{0}-\lambda_{n}}{\lambda_{n}}=1-\frac{d}{\lambda_{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Formula $\omega\left(G\right)\leq\frac{d+\lambda_{2}}{2}+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+First, define the cheeger constant of a graph to be 
+\begin_inset Formula $h\left(G\right)=\min_{s\leq\frac{n}{2}}\frac{E\left(S,\overline{S}\right)}{\left|S\right|}$
+\end_inset
+
+, where 
+\begin_inset Formula $E\left(S,\overline{S}\right)$
+\end_inset
+
+ is the number of edges betwees 
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $\overline{S}$
+\end_inset
+
+.
+ A graph with a large clique must have a small Cheeger constant, because
+ that clique will have mostly internal edges.
+ Suppose 
+\begin_inset Formula $G$
+\end_inset
+
+ has a clique 
+\begin_inset Formula $\omega$
+\end_inset
+
+ of size 
+\begin_inset Formula $q$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+h\left(G\right)\leq\frac{qd-2{q \choose 2}}{q}=d-\left(q-1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We apply the relationship between the eigenvalues and the Cheeger constant,
+ 
+\begin_inset Formula $h=\min_{s\leq\frac{n}{2}}\frac{\partial S}{\left|S\right|}$
+\end_inset
+
+.
+ Specifically,
+\begin_inset Formula 
+\[
+\frac{d-\lambda_{2}}{2}\leq h\left(G\right)\leq\sqrt{2d\left(d-\lambda_{2}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Thus,
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\frac{d-\lambda_{2}}{2}\leq d-\left(q-1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Re arranging gives
+\begin_inset Formula 
+\[
+q\leq d+1-\frac{d-\lambda_{2}}{2}=\frac{d+\lambda_{2}}{2}+1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Suppose we have a family of Ramanujan graphs whose degrees increase.
+ The complements of these graphs satisfy 
+\begin_inset Formula $\frac{\vartheta\left(\overline{G_{i}}\right)}{\alpha\left(\overline{G_{i}}\right)}\in O\left(\sqrt{d_{i}}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Apply the two lemmas to get
+\begin_inset Formula 
+\[
+\frac{\vartheta\left(\overline{G_{i}}\right)}{\alpha\left(\overline{G_{i}}\right)}\geq\frac{1-\frac{d}{\lambda_{n}}}{1+\frac{d+\lambda_{2}}{2}}\geq\frac{1+\frac{\sqrt{d}}{2}}{2+\frac{d+\sqrt{d}}{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "contextualitybib"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
