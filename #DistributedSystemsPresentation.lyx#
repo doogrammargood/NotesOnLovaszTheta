@@ -77,6 +77,15 @@ Information Principles and the Quantum Set
 Victor Bankston
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename multipartite.eps
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Frame
 \begin_inset Argument 4
 status open
@@ -145,7 +154,7 @@ A potential means of coordination without communication
 status open
 
 \begin_layout Plain Layout
-Two metaphors for non-locality
+A Metaphor for Non-Locality
 \end_layout
 
 \end_inset
@@ -155,42 +164,11 @@ Two metaphors for non-locality
 
 \begin_deeper
 \begin_layout Itemize
-Alice and Bob possess specially correllated coins, which always produce
- the same sequence.
+We have Boxes, which abstract physics
 \end_layout
 
 \begin_layout Itemize
-Each coin individually produces a random sequence.
-\end_layout
-
-\begin_layout Itemize
-If Alice and Bob are physically far apart, their coins have a non-local
- correllation.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-These correllations do not transmit any information, but they still represent
- a consensus.
-\end_layout
-
-\begin_layout Itemize
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Alice and Bob and Charlie each have coordinated Boxes.
-\end_layout
-
-\begin_layout Itemize
-Alice (Bob, Charlie) chooses an input 
+Alice (Bob) chooses an input 
 \begin_inset Formula $\left\{ 0,1\right\} $
 \end_inset
 
@@ -204,12 +182,22 @@ Alice (Bob, Charlie) chooses an input
 
 \begin_deeper
 \begin_layout Itemize
-A priori, Alice's output may depend on not only her but also Bob's and Charlies
- input and output, as well as random variables.
+A priori, Alice's output may depend on not only her but also Bob's input
+ and output, as well as random variables.
 \end_layout
 
 \begin_layout Itemize
 This allows for correllations between their outputs.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We will impose various constraints on these boxes.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Most generally, they cannot transfer information.
 \end_layout
 
 \end_deeper
@@ -223,7 +211,7 @@ This allows for correllations between their outputs.
 status open
 
 \begin_layout Plain Layout
-Box Distributions
+Distributions Charaterize Boxes
 \end_layout
 
 \end_inset
@@ -233,16 +221,11 @@ Box Distributions
 
 \begin_deeper
 \begin_layout Itemize
-The boxes can be described by their joint probability distribution: 
+Boxes are characterized by their joint probability distribution: 
 \begin_inset Formula $Pr\left(a_{1}a_{2}a_{3}\mid x_{1}x_{2}x_{3}\right)$
 \end_inset
 
 .
- This is a 
-\begin_inset Formula $2^{6}$
-\end_inset
-
--dimensional vector.
 \end_layout
 
 \begin_layout Itemize
@@ -255,12 +238,8 @@ By choosing randomly between two distributions, we can always form convex
  combinations.
 \end_layout
 
-\begin_layout Itemize
-All bodies in the heirarchy are convex
-\end_layout
-
 \end_deeper
-\begin_layout Itemize
+\begin_layout Standard
 \begin_inset Graphics
 	filename heirachy.eps
 	scale 20
@@ -271,13 +250,15 @@ All bodies in the heirarchy are convex
 \end_layout
 
 \begin_layout Itemize
-Membership for The Quantum Set is thought to be undecideable.
-\end_layout
-
-\begin_layout Itemize
 We would like an information principle which characterizes the quantum set.
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Helpful for identifying information applications.
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Separator
 
@@ -298,9 +279,14 @@ Bell Inequalities
 
 \begin_deeper
 \begin_layout Itemize
+A mathematical definition of correllation.
+\end_layout
+
+\begin_layout Itemize
 Mathematical Motiff: Study a space by studying functions on that space.
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 These bodies may be studied by optimizing linear functions over them.
 \end_layout
@@ -310,11 +296,21 @@ A convex set is defined by the set of hyperplanes tangent to it.
 \end_layout
 
 \begin_layout Itemize
-Each hyperplane corresponds to an inequality which is always satisfied for
- that set.
+Each hyperplane represents an inequality which that set satisfies.
 \end_layout
 
+\end_deeper
 \begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename heirachy_with_hyperplanes.eps
+	scale 17
+
+\end_inset
+
 
 \end_layout
 
@@ -344,16 +340,84 @@ Can acheive
 \end_layout
 
 \begin_layout Itemize
-Demonstrates that the quantum set is strictly larger than the classical
- set.
+\begin_inset Formula $\therefore$
+\end_inset
+
+ the quantum set is strictly larger than the classical set.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bell Inequalities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A mathematical definition of correllation.
 \end_layout
 
 \begin_layout Itemize
-Experimentally verified.
+Mathematical Motiff: Study a space by studying functions on that space.
 \end_layout
 
-\begin_layout Pause
+\begin_deeper
+\begin_layout Itemize
+These bodies may be studied by optimizing linear functions over them.
+\end_layout
 
+\begin_layout Itemize
+A convex set is defined by the set of hyperplanes tangent to it.
+\end_layout
+
+\begin_layout Itemize
+Each hyperplane represents an inequality which that set satisfies.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Example: For 2 parties, the CHSH inequality: 
+\begin_inset Formula $Pr\left(00\mid00\right)+Pr\left(11\mid00\right)+Pr\left(00\mid01\right)+Pr\left(11\mid01\right)+Pr\left(00\mid10\right)+Pr\left(11\mid10\right)-Pr\left(00\mid11\right)-Pr\left(11\mid11\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Classically, maximized at 
+\begin_inset Formula $2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Can acheive 
+\begin_inset Formula $2\sqrt{2}$
+\end_inset
+
+ using the quantum set (Tsirelson's bound)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\therefore$
+\end_inset
+
+ the quantum set is strictly larger than the classical set.
 \end_layout
 
 \end_deeper
@@ -365,7 +429,7 @@ Example: For
  parties, Guess Your Neighbor's Input
 \begin_inset Formula 
 \[
-Pr\left(000\mid000\right)+Pr\left(110\mid001\right)+Pr\left(011\mid101\right)+Pr\left(101\mid110\right)\leq1
+Pr\left(000\mid000\right)+Pr\left(110\mid011\right)+Pr\left(011\mid101\right)+Pr\left(101\mid110\right)\leq1
 \]
 
 \end_inset
@@ -375,7 +439,7 @@ Pr\left(000\mid000\right)+Pr\left(110\mid001\right)+Pr\left(011\mid101\right)+Pr
 
 \begin_deeper
 \begin_layout Itemize
-Same bound for both quantum and classical correllations.
+Same bound for both quantum and classical correlations.
 \end_layout
 
 \end_deeper
@@ -408,8 +472,7 @@ The statistics of a person's outcome should only depend on his input.
 \end_layout
 
 \begin_layout Itemize
-(But the outcome itself may can depend on non-local things, allowing for
- strong correllations!)
+(But the outcome itself may can depend on non-local events!)
 \end_layout
 
 \begin_layout Itemize
@@ -438,8 +501,73 @@ The statistics of a person's outcome should only depend on his input.
 Defines a larger set of correlations than then Quantum Set.
 \end_layout
 
-\begin_layout Pause
+\begin_layout Standard
+\begin_inset Graphics
+	filename heirachy.eps
+	scale 36
 
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Some Information Principles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No Signalling
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The statistics of a person's outcome should only depend on his input.
+\end_layout
+
+\begin_layout Itemize
+(But the outcome itself may can depend on non-local events!)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\forall\widetilde{x}_{2}\in\left\{ 0,1\right\} $
+\end_inset
+
+
+\begin_inset Formula $Pr\left(a_{1}\mid x_{1}\right)=\sum_{a_{2}\in\left\{ 0,1\right\} }Pr\left(a_{1}a_{2}\mid x_{1}\widetilde{x}_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(i.e.
+ both summations on the right have the same value, so 
+\begin_inset Formula $Pr\left(a_{1}\mid x_{1}\right)$
+\end_inset
+
+ is well-defined.)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Defines a larger set of correlations than then Quantum Set.
 \end_layout
 
 \end_deeper
@@ -457,7 +585,7 @@ If Alice sends Bob
 \begin_inset Formula $m$
 \end_inset
 
- bits about Alice, even using his correllations.
+ bits about Alice, even using his correlations.
 \end_layout
 
 \begin_layout Itemize
@@ -469,7 +597,11 @@ When
 \end_layout
 
 \begin_layout Itemize
-Has been proposed as a candidate to characterize the quantum set.
+Compatible with Quantum Mechanics.
+\end_layout
+
+\begin_layout Itemize
+Proposed as a candidate to characterize the quantum set.
 \end_layout
 
 \begin_layout Itemize
@@ -497,8 +629,8 @@ Main Argument:
 
 \begin_deeper
 \begin_layout Itemize
-To create multipartite principles from bipartite ones, apply the bipartite
- principle over every bipartition.
+To create multipartite principles from bipartite ones, standard practice
+ is to apply the bipartite principle over every bipartition.
 \end_layout
 
 \begin_layout Itemize
@@ -542,13 +674,12 @@ Classically, we assume the collection of Boxes is in some state,
 
 , which determines the probability distributions of all the boxes for each
  input.
- (There may be additional, local sources of randomness)
+ (There may be additional local sources of randomness)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-The Boxes are far enough apart that they cannot send information.
- The classical assumption is that for any state, the Boxes behave like pairwise
+The classical assumption is that for any state, the Boxes behave like pairwise
  independent random variables.
  
 \end_layout
@@ -562,12 +693,17 @@ The Boxes are far enough apart that they cannot send information.
 
 \end_deeper
 \begin_layout Itemize
-We would like to define what it means to be classical over some bipartition
- of the parties, such as 
-\begin_inset Formula $1-23$
+Deterministic outcomes form the vertices of the polytope.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename heirachy.eps
+	scale 40
+
 \end_inset
 
-.
+
 \end_layout
 
 \end_deeper
@@ -583,7 +719,7 @@ status open
 \begin_inset Quotes eld
 \end_inset
 
-Classical over a bipartition
+Classical Over a Bipartition
 \begin_inset Quotes erd
 \end_inset
 
@@ -667,7 +803,7 @@ If
 \end_layout
 
 \begin_layout Itemize
-Using this naive definition, we can create non-locality with 
+We can create non-locality with 
 \begin_inset Formula $1$
 \end_inset
 
@@ -679,12 +815,18 @@ Using this naive definition, we can create non-locality with
 \begin_inset Formula $3$
 \end_inset
 
-) means.
+) means!
 \end_layout
 
 \begin_layout Itemize
-Our definition of being classical over a bipartition should be preserved
- under wirings- any protocol 
+\begin_inset Quotes eld
+\end_inset
+
+Classical over a bipartition
+\begin_inset Quotes erd
+\end_inset
+
+ should be preserved under any protocol 
 \begin_inset Formula $2$
 \end_inset
 
@@ -695,11 +837,40 @@ Our definition of being classical over a bipartition should be preserved
  implement.
 \end_layout
 
+\end_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename classical_over_partition.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Pause
 
 \end_layout
 
 \end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Classical Over a Bipartition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Updated Definition (Time Ordered Bilocal Distributions):
 \end_layout
@@ -736,7 +907,6 @@ where
 \end_layout
 
 \begin_layout Itemize
-Essentially, 
 \begin_inset Formula $2$
 \end_inset
 
@@ -747,7 +917,7 @@ Essentially,
  must be able to measure first.
 \end_layout
 
-\begin_deeper
+\end_deeper
 \begin_layout Itemize
 Being able to think of 
 \begin_inset Formula $2$
@@ -757,7 +927,7 @@ Being able to think of
 \begin_inset Formula $3$
 \end_inset
 
- as measuring first allows us to have a local model for any protocols 
+ as measuring first gives a local model for any protocol 
 \begin_inset Formula $2$
 \end_inset
 
@@ -768,8 +938,22 @@ Being able to think of
  enact.
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+It is not claimed that TOBL is closed under wirings.
+\end_layout
+
 \end_deeper
-\end_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename classical_over_partition.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Separator
 
@@ -1808,6 +1992,10 @@ Guess Your Neighbor's Input is
 : It's not in the quantum set!
 \end_layout
 
+\begin_layout Itemize
+Found via linear program maximizing GYNI over TOBL
+\end_layout
+
 \end_deeper
 \begin_layout Separator
 
@@ -1829,12 +2017,26 @@ Decompositions
 \begin_deeper
 \begin_layout Itemize
 Decomposition: 
-\begin_inset Formula $\sum_{\lambda}p\left(\lambda\right)P\left(a_{1}\mid x_{1}\right)P_{2\to3}\left(a_{2}a_{3}\mid x_{2}x_{3},\lambda\right)$
+\begin_inset Formula $\sum_{\lambda}p\left(\lambda\right)P\left(a\mid x_{1}\right)P_{2\to3}\left(bc\mid x_{2}x_{3},\lambda\right)$
 \end_inset
 
 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+So 
+\begin_inset Formula $c$
+\end_inset
+
+ can depend on 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="10">
@@ -4588,6 +4790,69 @@ Decomposition
 
 \end_layout
 
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Conclusion:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Information Causality cannot characterize the quantum set.
+\end_layout
+
+\begin_layout Itemize
+Information Causality for multiple parties is defined based on a bipartite
+ principle
+\end_layout
+
+\begin_layout Itemize
+The counter-example distribution will obey information causality, 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The distribution behaves classically over any bipartite set.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The distribution is not in the quantum set.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Its value for GYNI is 
+\begin_inset Formula $\frac{7}{6}>1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We will need a multipartite principle to characterize the quantum set.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Or we need to reconsider how to extend a bipartite principle to a multipartite
+ one.
+\end_layout
+
+\end_deeper
 \end_deeper
 \end_body
 \end_document

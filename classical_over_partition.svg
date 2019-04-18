@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg3851"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="classical_over_partition.svg">
+  <defs
+     id="defs3853" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="329.40717"
+     inkscape:cy="554.56689"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1375"
+     inkscape:window-height="876"
+     inkscape:window-x="1985"
+     inkscape:window-y="124"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3856">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3861"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(386.88843,-84.852811)"><flowRegion
+         id="flowRegion3863"><rect
+           id="rect3865"
+           width="291.93408"
+           height="109.09647"
+           x="-88.893425"
+           y="448.29099" /></flowRegion><flowPara
+         id="flowPara3867"
+         style="font-size:25px">Bilocal</flowPara></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 475.25208,430.35839 c 28.86713,74.9737 133.40342,-40.86479 46.27654,-65.31956"
+       id="path3869"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 521.92165,380.84533 c -13.8159,-22.07349 -12.06933,-16.93613 7.38792,-30.00867"
+       id="path3871"
+       inkscape:connector-curvature="0" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3873"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.84221333,-0.53914442,0.53914442,0.84221333,266.40251,-50.409271)"><flowRegion
+         id="flowRegion3875"><rect
+           id="rect3877"
+           width="173.74623"
+           height="60.609154"
+           x="-70.710678"
+           y="560.41791" /></flowRegion><flowPara
+         id="flowPara3879">wirings</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3883"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(-143.44166,137.38075)"><flowRegion
+         id="flowRegion3885"><rect
+           id="rect3887"
+           width="265.6701"
+           height="197.9899"
+           x="283.85287"
+           y="316.97116" /></flowRegion><flowPara
+         id="flowPara3889"
+         style="font-size:25px">Time-Ordered Bilocal</flowPara></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 80.812203,536.17426 56.568547,-107.07617 105.05587,-21.21321 133.34013,3.03046 79.80205,31.31473 45.45687,92.93403"
+       id="path3891"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 34.345187,532.13364 76.771593,-166.67517 121.21831,-38.38579 211.12188,5.05076 88.89342,95.96449 43.43656,106.06602"
+       id="path3893"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
